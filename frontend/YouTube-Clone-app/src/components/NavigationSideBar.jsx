@@ -48,9 +48,9 @@ function NavigationSideBar() {
     return (
         <div className='HeaderComponent'>
           {/*---------------------------NAVIGATION SIDE BAR SECTION---------------------- */}
-            <section className="sidebar hideComponent fixed top-0 left-0 w-[30%] h-[100%] bg-[#ffffff] shadow-2xl p-3 border-gray-100 border-2 z-[1000]">
+            <section className="sidebar hideComponent fixed top-0 left-0 w-[25%] h-[100%] bg-[#ffffff] shadow-2xl p-3 border-gray-100 border-2 z-[1000]">
                   <div className="Logo flex items-center">
-                      <img className="h-7" src="/YouTube Logo.JPG" alt="YouTube Logo" />
+                      <img className="w-[100%] h-auto" src="/YouTube Logo.JPG" alt="YouTube Logo" />
                   </div>
                   {/* Side Navigation Bar */}
                   <ul className="side-menu top mt-5 flex flex-col gap-2 w-[100%]">

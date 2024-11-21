@@ -36,11 +36,11 @@
     }
 
     .side-menu li .bx{
-        @apply text-xl
+        @apply text-[7vw]
     }
 
     .side-menu li .text{
-        @apply text-sm font-medium
+        @apply text-[3.5vw] font-medium
     }
 
     /*-------- Navigation SideBar Styling ----------*/
