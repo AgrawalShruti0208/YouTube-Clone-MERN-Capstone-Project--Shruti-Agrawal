@@ -13,7 +13,42 @@
         background-color: #fdfeff;
         overflow-x: hidden;
     }
+
+    /* class to hide something */
+    .hideComponent{
+        display: none;
+    }
+
+    /* class to show something back */
+    .showComponent{
+        display: block;
+    }
 }
 
 @layer components{   
+    /*-------- Navigation SideBar Styling ----------*/
+    .side-menu li{
+        @apply rounded-md active:after:bg-[#eaeaea89] hover:bg-[#ededed]
+    }
+
+    .side-menu li a{
+        @apply flex items-center justify-around p-1
+    }
+
+    .side-menu li .bx{
+        @apply text-xl
+    }
+
+    .side-menu li .text{
+        @apply text-sm font-medium
+    }
+
+    /*-------- Navigation SideBar Styling ----------*/
+    /* ---------------Search Form---------------- */
+    .SearchInApp .bx,.showSeachForm .bx, .showMenu .bx{
+        @apply text-2xl
+    }
+    /* ---------------Search Form---------------- */
+
+    
 }

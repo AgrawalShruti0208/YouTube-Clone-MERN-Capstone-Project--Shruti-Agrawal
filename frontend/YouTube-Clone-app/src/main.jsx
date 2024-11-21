@@ -11,6 +11,7 @@ import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router
 //importing all the components
 import App from './App.jsx'
 import Home from './pages/HomePage/Home.jsx'
+import Login from './pages/Login Page/Login.jsx'
 
 //Root route for App Component
         //Components required for Changing main content area as Child elements of App
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element: <Home />
+            },
+            {
+                path:'/login',
+                element: <Login />
             }
         ]
     }
