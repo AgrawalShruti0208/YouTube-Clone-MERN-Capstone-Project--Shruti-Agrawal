@@ -3,12 +3,20 @@ import mongoose from "mongoose";
 const userVideoSchema = mongoose.Schema(
     { 
         videoURL: {
-        type: String,
-        require:[true,"Add URL of YouTube Video"]
+            type: String,
+            validate: {
+               validator: function(v) {
+
+                    return /(?:.+?)?(?:\/v\/|watch\/|\?v=|\&v=|youtu\.be\/|\/v=|^youtu\.be\/|watch\%3Fv\%3D)([a-zA-Z0-9_-]{11})+/.test(v);
+               },
+               message: props => `${props.value} is not a valid youtube link.`
+            },
+            required: [true, 'Youtube video link is required.']
+
         },
         videoTitle:{
             type : String,
-            require:[true,"Add Title of Your Video"]
+            required:[true,"Add Title of Your Video"]
         },
     }
 )

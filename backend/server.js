@@ -48,5 +48,5 @@ app.use(bodyParser.json());//using body-parser to check and convert request body
 //invoking routes function to run all the API routes
 // UserRoutes(app);
 ChannelRoutes(app);
-// CommentsRoutes(app);
+CommentsRoutes(app);
 // VideosRoutes(app);

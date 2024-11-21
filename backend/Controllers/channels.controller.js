@@ -4,11 +4,11 @@ import notifier from 'node-notifier';
 
 
 // controller function to add Channel to the Database
-export async function addChannel(req,res){
+export function addChannel(req,res){
     
     const channel = req.body;
     
-            await ChannelsModel.create(channel)
+        ChannelsModel.create(channel)
             .then((savedData) =>{
                 res.send(savedData);
                 notifier.notify({
@@ -95,8 +95,8 @@ export function getVideosFromChannel(req,res){
     })
     .catch((err)=>{
         //catch => if not successful to fetch data, send error 
-        console.log("Error in fetching the product:",err.message);
-        res.status(500).json({message:"Error in fetching the product:"+err.message});
+        console.log("Error in fetching videos:",err.message);
+        res.status(500).json({message:"Error in fetching videos"+err.message});
     });
        
 }
