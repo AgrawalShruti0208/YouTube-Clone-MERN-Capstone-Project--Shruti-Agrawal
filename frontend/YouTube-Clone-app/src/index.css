@@ -23,6 +23,85 @@
     .showComponent{
         display: block;
     }
+
+    /* ----------------- Videos Section---------------------- */
+        /* -------- Buttons Slider ----------- */
+            .slider-width{
+                transition: 0.4s ease-in-out;
+            }
+            .slider-item{
+                height: 40px;
+            }
+
+            .slider-button{
+            
+                border-radius: 10px;
+                padding: 8px 15px;
+                height: 40px;
+                margin-top: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                width: 100%;
+                will-change: transform;
+                font-size:medium;
+            }
+
+            .slider-button:hover{
+                background: black;
+                color: white;
+                box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+                transform: translateY(-2px);
+            }
+            .slider-button:active,.slider-button:active::after{
+                background: black;
+                color: white;
+                box-shadow: none;
+                transform: translateY(0);
+            }
+
+            .slider-item input[type="radio"] {
+                opacity: 0;
+                position: fixed;
+                width: 0;
+            }
+
+            .slider-item input[type="radio"]:checked +div {
+                background: black;
+                color: white;
+                box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+                transform: translateY(-2px);
+            }
+
+            .slider-item input[type="radio"] +div {
+                background: #d5d3d495;
+                
+            }
+
+            .btnWrapper button .bx{
+                background-color: rgba(62, 62, 62, 0.351);
+                color: white;
+                font-size: large;
+                border-radius: 50%;
+                padding: 3px;
+            }
+
+            .btnWrapper button .bx:hover, .btnWrapper button .bx:active{
+                background-color: rgba(44, 44, 44, 0.712);
+                color: white;
+                
+            }
+
+    
+
+            
+        
+          
+
 }
 
 @layer components{   

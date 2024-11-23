@@ -12,7 +12,7 @@ function NavigationSideBar() {
         // If Side Menu is Closed, make changes to open it
         if(sideMenu.classList.contains('hideComponent')){
             sideMenu.classList.replace('hideComponent','showComponent');
-            mainArea.classList.replace('left-0','left-[32%]');
+            mainArea.classList.replace('left-0','left-[35%]');
             header.classList.replace('ml-0.5','ml-[32%]');
             logo.classList.replace('visible','invisible'); 
             
@@ -21,7 +21,7 @@ function NavigationSideBar() {
         }// If Side Menu is Open, make changes to close it
         else if(sideMenu.classList.contains('showComponent')){
             sideMenu.classList.replace('showComponent','hideComponent');
-            mainArea.classList.replace('left-[32%]','left-0');
+            mainArea.classList.replace('left-[35%]','left-0');
             header.classList.replace('ml-[32%]','ml-0.5');
             logo.classList.replace('invisible','visible');
             
@@ -74,7 +74,7 @@ function NavigationSideBar() {
           {/*---------------------------HEADER SECTION---------------------- */}
             <section className='Header flex items-center justify-between p-1 relative w-[100%] ml-0.5 border-b-2 border-spacing-1'>
     
-              <button className='showMenu z-[100] absolute top-12 left-4 bg-[#eceaea] w-10 h-8' onClick={handleShowMenu}>
+              <button className='showMenu ml-2 bg-[#eceaea] w-10 h-8' onClick={handleShowMenu}>
                 <i className='bx bx-menu bx-rotate-180'></i>
               </button>
               
@@ -94,7 +94,7 @@ function NavigationSideBar() {
               </div>
                 
               {/* Extra button to display searchForm */}
-                <button className='showSeachForm' onClick={handleShowSearchForm}>
+                <button className='showSeachForm mr-2' onClick={handleShowSearchForm}>
                     <i className='bx bx-search'></i>
                 </button>
               
