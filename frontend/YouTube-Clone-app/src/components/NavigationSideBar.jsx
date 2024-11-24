@@ -13,7 +13,7 @@ function NavigationSideBar() {
         if(sideMenu.classList.contains('hideComponent')){
             sideMenu.classList.replace('hideComponent','showComponent');
             mainArea.classList.replace('left-0','left-[35%]');
-            header.classList.replace('ml-0.5','ml-[32%]');
+            header.classList.replace('ml-0.5','ml-[24%]');
             logo.classList.replace('visible','invisible'); 
             
     
@@ -22,7 +22,7 @@ function NavigationSideBar() {
         else if(sideMenu.classList.contains('showComponent')){
             sideMenu.classList.replace('showComponent','hideComponent');
             mainArea.classList.replace('left-[35%]','left-0');
-            header.classList.replace('ml-[32%]','ml-0.5');
+            header.classList.replace('ml-[24%]','ml-0.5');
             logo.classList.replace('invisible','visible');
             
         }
@@ -72,17 +72,17 @@ function NavigationSideBar() {
                   
             </section>
           {/*---------------------------HEADER SECTION---------------------- */}
-            <section className='Header flex items-center justify-between p-1 relative w-[100%] ml-0.5 border-b-2 border-spacing-1'>
+            <section className='Header bg-white flex items-center justify-between gap-2 p-1 fixed z-[1000]  pb-5  w-[100%] ml-0.5 border-b-2 border-spacing-1'>
     
               <button className='showMenu ml-2 bg-[#eceaea] w-10 h-8' onClick={handleShowMenu}>
                 <i className='bx bx-menu bx-rotate-180'></i>
               </button>
               
-              <div className="HeaderLogo flex items-center visible">
+              <div className="HeaderLogo absolute left-16 visible">
                 <img className="h-9" src="/YouTube Logo.JPG" alt="YouTube Logo" />
               </div>
     
-              <div className="SearchInApp hideComponent items-center absolute bg-[#eaeaea] top-0 left-0 w-[100%] h-[100%]">
+              <div className="SearchInApp  hideComponent items-center absolute bg-[#eaeaea] top-0 left-0 w-[100%] h-[100%]">
                 <button className='backFromSearch w-[10%]' onClick={handleHideSearchForm} >
                   <i className='bx bx-arrow-back'></i>
                 </button>

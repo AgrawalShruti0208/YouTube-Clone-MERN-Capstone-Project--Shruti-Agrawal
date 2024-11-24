@@ -12,6 +12,7 @@
     body{
         background-color: #fdfeff;
         overflow-x: hidden;
+        overflow-y: auto;
     }
 
     /* class to hide something */
@@ -49,6 +50,7 @@
                 width: 100%;
                 will-change: transform;
                 font-size:medium;
+                background: #d5d3d495;
             }
 
             .slider-button:hover{
@@ -56,12 +58,19 @@
                 color: white;
                 box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
                 transform: translateY(-2px);
+                cursor: pointer;
             }
             .slider-button:active,.slider-button:active::after{
                 background: black;
                 color: white;
                 box-shadow: none;
                 transform: translateY(0);
+            }
+            .slider-button:checked{
+                background: black;
+                color: white;
+                box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+                transform: translateY(-2px);
             }
 
             .slider-item input[type="radio"] {
@@ -70,18 +79,9 @@
                 width: 0;
             }
 
-            .slider-item input[type="radio"]:checked +div {
-                background: black;
-                color: white;
-                box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-                transform: translateY(-2px);
-            }
 
-            .slider-item input[type="radio"] +div {
-                background: #d5d3d495;
-                
-            }
-
+            
+            
             .btnWrapper button .bx{
                 background-color: rgba(62, 62, 62, 0.351);
                 color: white;
@@ -96,7 +96,56 @@
                 
             }
 
-    
+        /* Video Section */
+            /* .VideoCard:hover, .VideoCard:active{
+                
+            } */
+            .Card_wrapper{
+                width: 100%;
+                overflow-x: hidden;
+                margin-bottom: 25px;
+            }
+            
+            .Card_wrapper .videoThumbnail{
+                width: 100%;
+            }
+
+            .Card_wrapper .videoThumbnail img{
+                width: 100%;
+                height: auto;
+            }
+
+            .Card_wrapper .videoSecondPart{
+                display: flex;
+                padding: 8px;
+                padding-bottom: 0px;
+                justify-content: space-between;
+                align-items: start;
+                width: 100%;
+            }
+
+            .Card_wrapper .videoSecondPart img{
+                border-radius: 50%;
+                width: 15%;
+            }
+
+            .Card_wrapper .videoSecondPart .videoDetails{
+                width: 80%;
+            }
+
+            .Card_wrapper .videoSecondPart .videoDetails h3{
+                font-size:0.9rem;
+                font-weight: 500;
+            }
+
+            .Card_wrapper .videoSecondPart .videoDetails .smallDetails{
+                display: flex;
+                font-size: small;
+                gap: 3px;
+                color: #5a5858;
+                font-weight: 500;
+            }
+
 
             
         

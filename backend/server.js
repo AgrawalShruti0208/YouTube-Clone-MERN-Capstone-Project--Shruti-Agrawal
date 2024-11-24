@@ -8,6 +8,13 @@ import UserRoutes from "./Routes/users.routes.js"
 import VideosRoutes from "./Routes/videos.routes.js"
 import CommentsRoutes from "./Routes/comments.routes.js"
 
+//Static data to be added to Models 
+    import { Video_Data } from "./utils/VideoData.js";
+    import VideosModel from "./Models/VideosModel.js";
+
+    import { Channel_Data } from "./utils/ChannelsData.js";
+    import ChannelsModel from "./Models/ChannelsModel.js";
+
 import cors from "cors" //importing 'cors' which is used to run and connect both local servers -for frontend and backend
 //CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 
@@ -37,6 +44,37 @@ const app = new express();
             app.listen(3000,()=>{
                 console.log("created server to run application on port number 3000");
             });
+            
+            //Loading Static Data to the Databases
+             // Check if videos already exist,if not preload them
+                VideosModel.countDocuments()
+                .then(count => {
+                    if (count === 0) {
+                        // Insert preload data if collection is empty
+                        VideosModel.insertMany(Video_Data)
+                        .then(() => {
+                            console.log('Preloaded Video data successfully');
+                        })
+                        .catch(err => {
+                            console.error('Error occured while preloading video data:', err);
+                        });
+                    }
+                });
+
+                // Check if channels already exist,if not preload them
+                ChannelsModel.countDocuments()
+                .then(count => {
+                    if (count === 0) {
+                        // Insert preload data if collection is empty
+                        ChannelsModel.insertMany(Channel_Data)
+                        .then(() => {
+                            console.log('Preloaded Channel data successfully');
+                        })
+                        .catch(err => {
+                            console.error('Error occured while preloading channel data:', err);
+                        });
+                    }
+                });
         }
     )
     .catch((error)=>console.log("Connection with MongoDB Database Unsuccessful!\nError:",error));
@@ -49,4 +87,4 @@ app.use(bodyParser.json());//using body-parser to check and convert request body
 // UserRoutes(app);
 ChannelRoutes(app);
 CommentsRoutes(app);
-// VideosRoutes(app);
+VideosRoutes(app);

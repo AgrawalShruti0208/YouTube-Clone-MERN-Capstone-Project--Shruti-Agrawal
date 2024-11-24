@@ -1,10 +1,9 @@
 //importing mongoose
 import mongoose from "mongoose";
 
-
-
 // To create Schema for Channel Collection
 const channelSchema = mongoose.Schema({
+    _id: String,
     channel_name: {
         type: String,
         required: [true,"Please enter your Channel Name!"],
@@ -15,21 +14,22 @@ const channelSchema = mongoose.Schema({
         required: [true,"Please enter your Name!"],
         cast:false,
     },
+    owner_avatar: {
+        type: String,
+        default: "../public/user_default_Avatar.jpg"
+    },
     description: String,
     banner:{
         type: String,
-        default:"./public/Youtube_Channel_Demo_Banner.png"
     },
     subscribers: {
-        type: Number,
-        default: (Math.random()*1000).toFixed(0)
+        type: String,
     },
     Videos:
     { 
         // Array of ObjectIDs of all the videos user saved inside another collection 'user_videos'
-            type: [mongoose.Schema.Types.ObjectId], 
-            ref: 'user_videos', 
-            default: [new mongoose.Types.ObjectId('673f581acf4dd2a039efcaf7')]
+            type: [String],
+            default: ["video13","video14","video15"] //demo videos 
             
     }
     
@@ -37,4 +37,8 @@ const channelSchema = mongoose.Schema({
 },{strictPopulate: false});
 
 const ChannelsModel = mongoose.model("channels",channelSchema);
+
+
+ 
+
 export default ChannelsModel;

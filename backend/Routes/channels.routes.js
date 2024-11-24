@@ -1,4 +1,4 @@
-import { addChannel , addVideoToChannel, getVideosFromChannel} from "../Controllers/channels.controller.js";
+import { addChannel , addVideoToChannel, getVideosFromChannel, getChannels} from "../Controllers/channels.controller.js";
 
 function ChannelRoutes(app) {
     //POST method to add video to the channel
@@ -7,8 +7,10 @@ function ChannelRoutes(app) {
     // POST method to add channel to the Database
         app.post('/channel',addChannel);
 
-    // FETCH videos from the channel user created
+    // FETCH videos from the channel 
         app.get('/channel/:id',getVideosFromChannel)
+
+        app.get('/channels',getChannels)
 
 }
 

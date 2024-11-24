@@ -69,10 +69,42 @@ export async function addVideoToChannel(req,res){
     
 } 
 
+// // To display videos of the Channel
+// export function getVideosFromChannel(req,res){
+    
+//     ChannelsModel.findOne({ _id : req.params.id}).populate('user_videos')
+//     .then(async(data)=>{
+        
+//         if(!data){
+//             console.log("Something Went Wrong,",err.message);
+//             return res.status(400).json({message:"Something Went Wrong,"+err.message});
+//         }
+
+//         const videoIDs = data.Videos;
+        
+//         //Then, you loop through videoIDs to find each video. If you go with this method, it's slightly faster to use Promise.all.
+
+//             const videoPromises = videoIDs.map(_id => {
+//                 return UserVideoModel.findOne({ _id })
+//             })
+
+//             const videos_Uploaded = await Promise.all(videoPromises)
+           
+
+//         res.send(videos_Uploaded);
+//     })
+//     .catch((err)=>{
+//         //catch => if not successful to fetch data, send error 
+//         console.log("Error in fetching videos:",err.message);
+//         res.status(500).json({message:"Error in fetching videos"+err.message});
+//     });
+       
+// }
+
 // To display videos of the Channel
 export function getVideosFromChannel(req,res){
     
-    ChannelsModel.findOne({ _id : req.params.id}).populate('user_videos')
+    ChannelsModel.findOne({ _id : req.params.id})
     .then(async(data)=>{
         
         if(!data){
@@ -80,23 +112,26 @@ export function getVideosFromChannel(req,res){
             return res.status(400).json({message:"Something Went Wrong,"+err.message});
         }
 
-        const videoIDs = data.Videos;
-        
-        //Then, you loop through videoIDs to find each video. If you go with this method, it's slightly faster to use Promise.all.
-
-            const videoPromises = videoIDs.map(_id => {
-                return UserVideoModel.findOne({ _id })
-            })
-
-            const videos_Uploaded = await Promise.all(videoPromises)
-           
-
-        res.send(videos_Uploaded);
+        res.send(data);
     })
     .catch((err)=>{
         //catch => if not successful to fetch data, send error 
-        console.log("Error in fetching videos:",err.message);
-        res.status(500).json({message:"Error in fetching videos"+err.message});
+        console.log("Error in fetching channel details: ",err.message);
+        res.status(500).json({message:"Error in fetching channel details: "+err.message});
     });
        
+}
+
+export async function getChannels(req,res){
+    try{
+        
+        
+        res.send(await ChannelsModel.find({}));
+       
+           
+    }catch(error){
+        //catch => if not successful to fetch data, send error 
+        console.log("Error in fetching list of videos:",error.message);
+        res.status(500).json({message:"Error in fetching list of videos:"+error.message});
+    }
 }

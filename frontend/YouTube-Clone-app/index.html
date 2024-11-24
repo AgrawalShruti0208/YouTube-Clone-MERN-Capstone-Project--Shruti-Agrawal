@@ -12,11 +12,27 @@
 
     
     <title>YouTube | Shruti Agrawal</title>
+    <style>
+      .hideBtn {
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
 
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      window.onscroll = function() {myFunction()};
+      
+      function myFunction() {
+        if (document.documentElement.scrollTop > 0) {
+          document.querySelector(".swiper-nav-btns").classList.add("hideBtn");
+        } else {
+          document.querySelector(".swiper-nav-btns").classList.remove("hideBtn");
+        }
+      }
+      </script>
     
   </body>
 </html>

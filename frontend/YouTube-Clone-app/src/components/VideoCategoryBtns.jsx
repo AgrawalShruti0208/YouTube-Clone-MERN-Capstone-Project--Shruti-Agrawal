@@ -1,4 +1,5 @@
-import {useState} from "react"
+import {useState} from "react";
+import { Link } from "react-router-dom";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,7 +12,7 @@ import SwipperNavigationBtns from "./SwipperNavigationBtns.jsx";
 // Import Swiper styles
 import 'swiper/css';
 
-function ShowVideos() {
+function VideoCategoryBtns() {
     // State for storing the selected option. Default is "All"
         const [selectedOption, setSelectedOption] = useState("All")  
             
@@ -21,7 +22,7 @@ function ShowVideos() {
             setSelectedOption(event.target.value)
         }
     return (
-        <div className= 'VideoDisplay'>
+        <div className= 'VideoDisplay pt-1'>
             {/* Component to display all the videos and filtered videos */}
 
             {/* Slider to show filter buttons */}
@@ -35,13 +36,25 @@ function ShowVideos() {
                     modules={[Navigation]}
                     spaceBetween={10}
                     slidesPerView={4}
+                    breakpoints={{
+                        0: {
+                          slidesPerView: 4,
+                        },
+                        768:{
+                          slidesPerView:6,
+                        },
+                        1024:{
+                            slidesPerView:7,
+                        }
+                    }}
     
                 >
                     <SwipperNavigationBtns />
                     <form onSubmit={(e)=>e.preventDefault()} className="slider-width swiper-wrapper">
+                    
                         <SwiperSlide className="slider-item">
-                            
-                                <label>
+                            <Link to={`/Videos/All`}>   
+                                
                                     <input
                                         type="radio"
                                         value="All"
@@ -49,13 +62,14 @@ function ShowVideos() {
                                         checked={selectedOption === "All"}
                                         onChange={onValueChange}/>
                                     <div className="slider-button">All</div>
-                                </label>
-                            
+                                
+                            </Link> 
                         </SwiperSlide>
+                    
                     
                         <SwiperSlide className="slider-item">
                             
-                                <label>
+                            <Link to={`/Videos/Music`}>   
                                     <input
                                         type="radio"
                                         value="Music"
@@ -63,13 +77,13 @@ function ShowVideos() {
                                         checked={selectedOption === "Music"}
                                         onChange={onValueChange}/>
                                     <div className="slider-button">Music</div>
-                                </label>
-                            
+                                
+                            </Link>
                         </SwiperSlide>
-
+                    
                         <SwiperSlide className="slider-item">
                             
-                                <label>
+                                <Link to={`/Videos/Films`}>
                                     <input
                                         type="radio"
                                         value="Films"
@@ -78,13 +92,13 @@ function ShowVideos() {
                                         checked={selectedOption === "Films"}/>
                                         
                                     <div className="slider-button">Films</div>
-                                </label>
+                                </Link>
                             
                         </SwiperSlide>
 
                         <SwiperSlide className="slider-item">
                             
-                                <label>
+                                <Link to={`/Videos/Comedy`}>
                                     <input
                                         type="radio"
                                         value="Comedy"
@@ -93,13 +107,13 @@ function ShowVideos() {
                                         checked={selectedOption === "Comedy"}/>
                                         
                                     <div className="slider-button">Comedy</div>
-                                </label>
+                                </Link>
                             
                         </SwiperSlide>
 
                         <SwiperSlide className="slider-item">
                             
-                                <label>
+                                <Link to={`/Videos/Travel`}>
                                     <input
                                         type="radio"
                                         value="Travel"
@@ -108,13 +122,13 @@ function ShowVideos() {
                                         checked={selectedOption === "Travel"}/>
                                         
                                     <div className="slider-button">Travel</div>
-                                </label>
+                                </Link>
                             
                         </SwiperSlide>
 
                         <SwiperSlide className="slider-item">
                             
-                                <label>
+                                <Link to={`/Videos/Gaming`}>
                                     <input
                                         type="radio"
                                         value="Gaming"
@@ -123,13 +137,13 @@ function ShowVideos() {
                                         checked={selectedOption === "Gaming"}/>
                                         
                                     <div className="slider-button">Gaming</div>
-                                </label>
+                                </Link>
                             
                         </SwiperSlide>
 
                         <SwiperSlide className="slider-item">
                             
-                                <label>
+                                <Link to={`/Videos/Podcasts`}>
                                     <input
                                         type="radio"
                                         value="Podcasts"
@@ -138,7 +152,7 @@ function ShowVideos() {
                                         checked={selectedOption === "Podcasts"}/>
                                         
                                     <div className="slider-button">Podcasts</div>
-                                </label>
+                                </Link>
                             
                         </SwiperSlide>
 
@@ -164,4 +178,4 @@ function ShowVideos() {
     );
 }
 
-export default ShowVideos;
+export default VideoCategoryBtns;

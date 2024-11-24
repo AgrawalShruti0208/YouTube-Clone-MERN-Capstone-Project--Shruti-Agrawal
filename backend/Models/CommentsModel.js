@@ -16,7 +16,8 @@ const commentSchema = mongoose.Schema(
             required:[true, "Comment text required to add comment"],
             trim: true,
             minlength: [5,"Comment text should be a valid text"] //add comment with minimum length
-        }
+        },
+        video_ID : String
     },
     { timestamps: true }
 )
