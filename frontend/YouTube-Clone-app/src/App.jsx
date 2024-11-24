@@ -12,20 +12,20 @@ import { store } from './utils/AppReduxStore.js'
 
 function App() {
   return( 
-    <>
+    <div className='Appication'>
    
       <NavigationSideBar />
       
           <Provider store={store} >
             
-            <div className='MainContentArea w-[100%] relative left-0 pt-[45px]'>
+            <div className='MainContentArea w-[100%] relative left-0 pt-[50px]'>
               <Outlet />
             </div>
 
         </Provider>  
       
       
-    </>
+    </div>
   )
   
 }

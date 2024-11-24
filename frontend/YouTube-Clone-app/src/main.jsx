@@ -13,6 +13,7 @@ import App from './App.jsx'
 import Home from './pages/HomePage/Home.jsx'
 import Login from './pages/Login Page/Login.jsx'
 import DisplayCategoryVideos from './components/DisplayCategoryVideos.jsx'
+import VideoDetailsPage from './pages/Video_Details_Page/VideoDetailsPage.jsx'
 
 
 //Root route for App Component
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path:'/Videos/:category',
                 element: <DisplayCategoryVideos />
+            },
+            {
+                path:'/Video/:id',
+                element: <VideoDetailsPage />
             },
         ]
     }

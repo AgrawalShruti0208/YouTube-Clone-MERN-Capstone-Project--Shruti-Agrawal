@@ -5,6 +5,10 @@ import DisplayCategoryVideos from '../../components/DisplayCategoryVideos.jsx'
 
 import { useState, useEffect } from 'react';
 import {useCustomFetch} from '../../utils/useCustomFetch.js'
+import DisplayAllVideos from '../../components/DisplayAllVideos.jsx';
+
+import VideoCard from '../../components/VideoCard.jsx';
+import { Link } from 'react-router-dom';
 
 function Home() {
 
@@ -28,13 +32,20 @@ function Home() {
     }
     
     console.log(Videos_data);
+    if(fetchedData){
+        console.log("fetchedData",fetchedData);
+        
+        return ( 
+            <>
+                <VideoCategoryBtns />
+                <DisplayAllVideos/>
+                    
+            </>
+        );
+
+        
+    }
     
-    return ( 
-        <>
-            
-            <DisplayCategoryVideos/>
-        </>
-     );
 }
 
 export default Home;

@@ -8,6 +8,7 @@ import VideoCard from "./VideoCard.jsx";
 // Redux Store
 import {useDispatch , useSelector} from 'react-redux'
 import { fetchVideoData } from "../utils/videoDataSlice.js";
+import { Link } from "react-router-dom";
 
 
 const DisplayCategoryVideos=()=>{
@@ -32,6 +33,8 @@ const DisplayCategoryVideos=()=>{
         // dispatching action to fetch data from backend API and return the state of request
         dispatch(fetchVideoData())
     },[dispatch]);
+
+      
 
     const category = ["All","Music","Films","Podcasts","Gaming","Travel","Comedy"];
     let FilteredList = [];
@@ -58,13 +61,13 @@ const DisplayCategoryVideos=()=>{
 
             {data.loading && <div className="SpinLoader"><ClipLoader /></div>}
             {!data.loading && 
-                <div className="VideoSection">
+                <div className="VideoSection mt-4">
 
                     
                     {FilteredList.map((video)=>{
                         
                         console.log("Filtered Array: ",video);
-                        return <VideoCard key={video._id} videoData={video}/>
+                        return <Link to={`/Video/${video._id}`}><VideoCard key={video._id} videoData={video}/></Link>
                         
                     
                     })}
