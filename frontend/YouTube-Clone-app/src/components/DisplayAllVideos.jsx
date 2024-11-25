@@ -32,7 +32,7 @@ function DisplayAllVideos() {
                {Videos_data.map((video)=>{
                         
                         console.log("Filtered Array: ",video);
-                        return <Link to={`/Video/${video._id}`}><VideoCard key={video._id} videoData={video}/></Link>
+                        return <Link key={video._id} to={`/Video/${video._id}`}><VideoCard videoData={video}/></Link>
                         
                     
                 })}

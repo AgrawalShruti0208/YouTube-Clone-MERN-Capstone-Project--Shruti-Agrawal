@@ -6,6 +6,7 @@ import { useEffect } from "react";
 // components
 import VideoPlayer from './VideoPlayer.jsx';
 import VideoInformation from './VideoInformation.jsx';
+import VideoChannelInfo from './VideoChannelInfo.jsx';
 
 function MainDetailsComponent(props) {
     
@@ -48,13 +49,14 @@ function MainDetailsComponent(props) {
        console.log(selected_channel);
 
    
-        //bg-[#eaeaea]
+        
         return ( 
             <div className="MainDetailsComponent">
                 <VideoPlayer VideoUrl={selected_video[0].videoURL} />
-                <div className='Information_Section p-4'>
+                <div className='Information_Section p-4 relative'>
                     <VideoInformation ChannelData ={selected_channel} VideoData ={selected_video} />
                 </div>
+                <VideoChannelInfo ChannelData ={selected_channel} VideoData ={selected_video} />
                 
             </div>
         );

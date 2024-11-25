@@ -21,6 +21,7 @@ const channelSchema = mongoose.Schema({
     description: String,
     banner:{
         type: String,
+        default:"/Default blank template.jpg"
     },
     subscribers: {
         type: String,

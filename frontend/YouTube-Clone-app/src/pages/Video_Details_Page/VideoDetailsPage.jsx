@@ -5,10 +5,9 @@ function VideoDetailsPage() {
     const params = useParams();
     const video_id = params.id;
 
-    console.log(params);
+    
     return ( 
         <>
-            <h1>Video Details</h1>
             <MainDetailsComponent videoID={video_id}/>
         </>
      );

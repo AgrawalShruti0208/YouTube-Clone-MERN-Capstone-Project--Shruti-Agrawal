@@ -14,6 +14,7 @@ import Home from './pages/HomePage/Home.jsx'
 import Login from './pages/Login Page/Login.jsx'
 import DisplayCategoryVideos from './components/DisplayCategoryVideos.jsx'
 import VideoDetailsPage from './pages/Video_Details_Page/VideoDetailsPage.jsx'
+import Channel_Page from './pages/Channel_Page/Channel_Page.jsx'
 
 
 //Root route for App Component
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
                 path:'/Video/:id',
                 element: <VideoDetailsPage />
             },
+            {
+                path:'/Channel/:id',
+                element: <Channel_Page />
+            }
         ]
     }
 ]);
