@@ -19,7 +19,7 @@ const DisplayCategoryVideos=()=>{
     const data = useSelector(state => state.videoList);
     
 
-    console.log("Data from Redux:",data);
+    
     
    
     const dynamic_parameter = useParams(); //Getting Category Parameter from URL
@@ -66,7 +66,6 @@ const DisplayCategoryVideos=()=>{
                     
                     {FilteredList.map((video)=>{
                         
-                        console.log("Filtered Array: ",video);
                         return <Link to={`/Video/${video._id}`}><VideoCard key={video._id} videoData={video}/></Link>
                         
                     

@@ -11,7 +11,7 @@ function VideoCard(props) {
     const dispatch = useDispatch();
 
     const data = useSelector(state => state.channelList);
-    console.log("Channel Data from Redux:",data);
+    
 
     useEffect(()=>{
         // dispatching action to fetch data from backend API and return the state of request
@@ -33,7 +33,7 @@ function VideoCard(props) {
         channel = channel[0];
            
     
-        console.log("Filtered Channel",channel);
+       
 
         const DateDescription = formatDistanceToNowStrict(
             video.videoUpload,

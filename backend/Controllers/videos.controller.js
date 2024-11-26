@@ -1,12 +1,12 @@
 import { Video_Data } from "../utils/VideoData.js";
 import VideosModel from "../Models/VideosModel.js";
+import CommentsModel from "../Models/CommentsModel.js";
 
 export async function getVideosData(req,res){
 
   
     try{
-        
-        
+         
         res.send(await VideosModel.find({}));
        
            
@@ -35,4 +35,32 @@ export async function getVideosByCategory(req,res) {
     
 }
 
+export async function getCommentsOfVideo(req,res){
+    const {video_ID} = req.params;
 
+    
+        try {
+            const video = await VideosModel.findById(video_ID).populate("comments");
+            if (!video) {
+              return res.status(404).json({ error: "Video not found" });
+            }
+            const commentIDs = video.videoComments;
+        
+            //Then, you loop through commentIDs to find each comment. If you go with this method, it's slightly faster to use Promise.all.
+
+                const commentPromises = commentIDs.map(_id => {
+                    return CommentsModel.findOne({ _id })
+                })
+
+                const  comments_Uploaded = await Promise.all(commentPromises);
+            
+
+            
+        
+            res.status(200).json({ comments: comments_Uploaded });
+          } catch (err) {
+            res.status(500).json({ error: "Failed to fetch comments" });
+          }
+
+
+}

@@ -25,13 +25,12 @@ function DisplayAllVideos() {
     }
     
     if(Videos_data){
-        console.log("fetchedData",Videos_data);
+        
         
         return ( 
             <div className="DisplayVideos pt-4">
                {Videos_data.map((video)=>{
                         
-                        console.log("Filtered Array: ",video);
                         return <Link key={video._id} to={`/Video/${video._id}`}><VideoCard videoData={video}/></Link>
                         
                     

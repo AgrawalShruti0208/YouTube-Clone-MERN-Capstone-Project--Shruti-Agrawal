@@ -4,7 +4,7 @@ import mongoose from "mongoose"
 
 //importing routes function in the server to run all the API routes
 import ChannelRoutes from "./Routes/channels.routes.js";
-import UserRoutes from "./Routes/users.routes.js"
+import { UserRoutes } from "./Routes/users.routes.js";
 import VideosRoutes from "./Routes/videos.routes.js"
 import CommentsRoutes from "./Routes/comments.routes.js"
 
@@ -14,6 +14,9 @@ import CommentsRoutes from "./Routes/comments.routes.js"
 
     import { Channel_Data } from "./utils/ChannelsData.js";
     import ChannelsModel from "./Models/ChannelsModel.js";
+
+    import CommentsModel from "./Models/CommentsModel.js";
+    import { Comment_Data } from "./utils/CommentsData.js";
 
 import cors from "cors" //importing 'cors' which is used to run and connect both local servers -for frontend and backend
 //CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
@@ -37,7 +40,7 @@ const app = new express();
 
     mongoose
     .connect(url)
-    .then((data)=>{
+    .then(async(data)=>{
             console.log("Connection with MongoDB Database Successful!");
 
             //creating server to run the application on specified port number only when connection with database is successful
@@ -45,21 +48,31 @@ const app = new express();
                 console.log("created server to run application on port number 3000");
             });
             
+
             //Loading Static Data to the Databases
-             // Check if videos already exist,if not preload them
-                VideosModel.countDocuments()
-                .then(count => {
-                    if (count === 0) {
-                        // Insert preload data if collection is empty
-                        VideosModel.insertMany(Video_Data)
-                        .then(() => {
-                            console.log('Preloaded Video data successfully');
-                        })
-                        .catch(err => {
-                            console.error('Error occured while preloading video data:', err);
-                        });
+            // Clear existing data (optional)
+                    await VideosModel.deleteMany({});
+                    await CommentsModel.deleteMany({});
+                    console.log("Cleared existing data");
+
+                    // Insert videos
+                    const videoDocs = await VideosModel.insertMany(Video_Data);
+                    console.log("Inserted videos");
+                
+
+                    const commentDocs = await CommentsModel.insertMany(Comment_Data);
+                    console.log("Inserted comments");
+                
+                    // Update videos to include associated comments
+                    for (const comment of commentDocs) {
+                      await VideosModel.findByIdAndUpdate(
+                        comment.video_ID,
+                        { $push: { videoComments: comment._id } },
+                        { new: true, useFindAndModify: false }
+                      );
                     }
-                });
+                
+                    console.log("Updated videos with comments");
 
                 // Check if channels already exist,if not preload them
                 ChannelsModel.countDocuments()
@@ -75,6 +88,8 @@ const app = new express();
                         });
                     }
                 });
+
+                
         }
     )
     .catch((error)=>console.log("Connection with MongoDB Database Unsuccessful!\nError:",error));
@@ -84,7 +99,7 @@ app.use(cors()); //using the middleware cors
 app.use(bodyParser.json());//using body-parser to check and convert request body in proper format
 
 //invoking routes function to run all the API routes
-// UserRoutes(app);
+UserRoutes(app);
 ChannelRoutes(app);
 CommentsRoutes(app);
 VideosRoutes(app);

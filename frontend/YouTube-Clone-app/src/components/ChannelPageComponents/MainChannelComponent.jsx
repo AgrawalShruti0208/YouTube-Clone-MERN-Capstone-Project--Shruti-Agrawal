@@ -33,7 +33,7 @@ function MainChannelComponent(props) {
         
        const videoIDs = selected_channel[0].Videos;
        console.log("SELECTED CHANNEL:",selected_channel);
-       console.log("VIDEO IDs:",videoIDs);
+       
     
        while(Videodata.videos.length==0){
             continue;

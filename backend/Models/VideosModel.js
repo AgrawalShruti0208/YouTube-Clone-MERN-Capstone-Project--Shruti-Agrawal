@@ -22,13 +22,13 @@ const videoSchema = mongoose.Schema({
         default:0
     },
     videoUpload: Date,
-    videoComments : {
+    videoComments : [
         // Array of ObjectIDs of all the comments user saved inside another collection 'comments'
-        type: [mongoose.Schema.Types.ObjectId], 
-        ref: 'comments'
-    }
+        {type: [mongoose.Schema.Types.ObjectId], 
+        ref: "comments"}
+    ]
     
-});
+},{strictPopulate : false});
 
 const VideosModel = mongoose.model("videos",videoSchema);
 export default VideosModel;

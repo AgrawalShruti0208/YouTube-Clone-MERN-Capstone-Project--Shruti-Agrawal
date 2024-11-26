@@ -250,6 +250,210 @@
                         line-clamp: 1; 
                 -webkit-box-orient: vertical;
             }
+
+
+            /* ----------LOGIN/SIGN UP PAGE--------------------- */
+            /* SignUpPage.css */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.LoginSignupContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header .text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #202020;
+}
+
+.header .underline {
+  width: 50px;
+  height: 3px;
+  background: #ff0000; /* YouTube red */
+  margin: 8px auto 0;
+  border-radius: 3px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input {
+  position: relative;
+}
+
+.input img {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  opacity: 0.6;
+}
+
+.input2{
+    display: flex;
+}
+.input2 input{
+    width: 100%;
+    
+}
+
+.input input {
+  width: 100%;
+  padding: 12px 16px 12px 40px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.input input:focus {
+  border: 1px solid #ff0000; /* YouTube red */
+}
+
+.Error {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.submit-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.submit {
+  background-color: #ff0000; /* YouTube red */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit:hover {
+  background-color: #e60000;
+}
+
+.ApiInstruction {
+  text-align: center;
+  color: #202020;
+  margin: 16px 0;
+}
+
+.auth-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .auth-footer a {
+    color: #e60000;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .auth-footer a:hover {
+    text-decoration: underline;
+  }
+
+  .comments-section {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .comments-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+  
+  .comment {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 10px;
+  }
+  
+  .comment-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .comment-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .comment-body {
+    flex: 1;
+  }
+  
+  .comment-header {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .comment-user {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+  }
+  
+  .comment-timestamp {
+    color: #aaa;
+    font-size: 12px;
+  }
+  
+  .comment-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #444;
+  }
+  
           
 
 }

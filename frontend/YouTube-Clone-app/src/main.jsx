@@ -11,10 +11,12 @@ import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router
 //importing all the components
 import App from './App.jsx'
 import Home from './pages/HomePage/Home.jsx'
-import Login from './pages/Login Page/Login.jsx'
+import { LoginPage } from './pages/Login Page/LoginPage.jsx'
+import { SignUpPage } from './pages/SignUp Page/SignUpPage.jsx'
 import DisplayCategoryVideos from './components/DisplayCategoryVideos.jsx'
 import VideoDetailsPage from './pages/Video_Details_Page/VideoDetailsPage.jsx'
 import Channel_Page from './pages/Channel_Page/Channel_Page.jsx'
+import { AccessDenied } from './components/AccessDenied.jsx'
 
 
 //Root route for App Component
@@ -32,7 +34,15 @@ const router = createBrowserRouter([
             },
             {
                 path:'/login',
-                element: <Login />
+                element: <LoginPage />
+            },
+            {
+                path:'/UserSignUp',
+                element: <SignUpPage />
+            },
+            {
+                path: '/AccessDenied',
+                element: <AccessDenied />
             },
             {
                 path:'/Videos/:category',

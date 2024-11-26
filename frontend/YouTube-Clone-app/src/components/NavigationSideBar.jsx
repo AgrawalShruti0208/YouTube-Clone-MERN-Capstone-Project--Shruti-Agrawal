@@ -1,8 +1,36 @@
 import { Link } from "react-router-dom";
 import SeachFunctionality from "./SearchFunctionality";
+import { isTokenExpired } from "../utils/HelperFunctions.js";
+import { useEffect } from "react";
 
 function NavigationSideBar() {
+    const userName = localStorage.getItem("userName");
+    const jwtToken = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
 
+
+
+    if(jwtToken){
+        
+
+        if(isTokenExpired(jwtToken)){
+            localStorage.removeItem('token');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userId');
+            
+            
+        }
+    
+    }
+    let user;
+    async function fetchUserDetails(){
+      let data = await fetch(`http://localhost:3000/user/${userId}`);
+      user = await data.json();
+    }
+
+    useEffect(()=>{
+      fetchUserDetails();
+    },[userName])
     function handleShowMenu(){
         const mainArea = document.querySelector('.MainContentArea');
         const sideMenu = document.querySelector('.sidebar');
@@ -44,6 +72,9 @@ function NavigationSideBar() {
           searchForm.classList.replace('flex','hideComponent');
         }
     }
+    if(user){
+      console.log("User: ",user);
+    }
     
     return (
         <div className='HeaderComponent'>
@@ -61,12 +92,19 @@ function NavigationSideBar() {
                               <span className="text">Home</span>
                           </Link>
                       </li>
+                      {!userName &&
                       <li>
-                          <Link to="#" className="text-blue-600">
+                          <Link to="/UserSignUp" className="text-blue-600">
                               <i className='bx bx-user-circle' ></i>
                               <span className="text">Sign in</span>
                           </Link>
                       </li>
+                      }
+                      {userName &&
+                        <li>
+                          <span className="text">{userName}</span>
+                        </li>
+                      }
     
                   </ul>
                   

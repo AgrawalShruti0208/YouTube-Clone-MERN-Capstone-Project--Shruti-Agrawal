@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import VideoPlayer from './VideoPlayer.jsx';
 import VideoInformation from './VideoInformation.jsx';
 import VideoChannelInfo from './VideoChannelInfo.jsx';
+import CommentsSection from './CommentsSection.jsx';
 
 function MainDetailsComponent(props) {
     
@@ -36,7 +37,7 @@ function MainDetailsComponent(props) {
             
        }
         
-       console.log(selected_video);
+       
        const ID = selected_video[0].channelId[0];
        if(Channeldata.channels.length!=0){
             selected_channel = Channeldata.channels.filter((channel)=>{
@@ -57,7 +58,7 @@ function MainDetailsComponent(props) {
                     <VideoInformation ChannelData ={selected_channel} VideoData ={selected_video} />
                 </div>
                 <VideoChannelInfo ChannelData ={selected_channel} VideoData ={selected_video} />
-                
+                <CommentsSection videoId={selected_video[0]._id} />
             </div>
         );
         }
