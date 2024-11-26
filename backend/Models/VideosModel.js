@@ -15,11 +15,11 @@ const videoSchema = mongoose.Schema({
     videoViews: String,
     videoLikes: {
         type: Number,
-        default:(Math.random()*1000).toFixed(0)
+        default:0
     },
     videoDislikes : {
         type: Number,
-        default:(Math.random()*1000).toFixed(0)
+        default:0
     },
     videoUpload: Date,
     videoComments : {

@@ -53,7 +53,7 @@ function VideoChannelInfo(props) {
                     <h6 className="text-gray-400">|</h6>
                     <div className="dislikeBtn">
                         <button onClick={toggleDisLikeBtn}>
-                                {(DisLikeStatus===true) ? <i class='bx bxs-dislike bx-burst bx-sm' ></i> :<i className='bx bx-dislike bx-tada-hover bx-sm'></i> }
+                                {(DisLikeStatus===true) ? <i className='bx bxs-dislike bx-burst bx-sm' ></i> :<i className='bx bx-dislike bx-tada-hover bx-sm'></i> }
                         </button>
                     </div>
                 </div>

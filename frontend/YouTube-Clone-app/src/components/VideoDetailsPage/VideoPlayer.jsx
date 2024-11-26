@@ -1,26 +1,36 @@
-import ReactPlayer from 'react-player'
+import React from 'react';
 
-function VideoPlayer(props) {
-   
-    const videoURL = props.VideoUrl;
+const VideoPlayer = ({ videoID }) => {
+  
+  window.addEventListener('error', (event) => {
+    if (event.message.includes('googleads.g.doubleclick.net')) {
+      event.preventDefault();
+    }
+  });
 
-    return ( 
-        // change size of Video player using this video player div
-        <div className="VideoPlayer">
-            <div className="videoWrapper">
-                <div className='videoWrapper2'>
-                    <ReactPlayer 
-                        url={videoURL} 
-                        controls={true} 
-                        width="100%"
-                        
-                                            
-                    />
-                </div>
-                
-            </div>
-        </div>
-     );
-}
+  if (!videoID) {
+    return <p>No video to display.</p>; // Fallback if videoID is missing
+  }
+
+  return (
+    <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+      <iframe
+        src={`https://www.youtube.com/embed/${videoID}`}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+        }}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        loading="lazy"
+      ></iframe>
+    </div>
+  );
+};
 
 export default VideoPlayer;

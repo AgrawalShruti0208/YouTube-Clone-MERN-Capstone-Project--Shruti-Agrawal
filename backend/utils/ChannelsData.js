@@ -60,12 +60,12 @@ export const Channel_Data = [
     },
     {
         "_id" : "channel7",
-        "channel_name" : "GeoGeo",
-        "channel_owner" : "@GeoGeoYT",
+        "channel_name" : "Travel With Nom Nom",
+        "channel_owner" : "@travelwithnomnom",
         "owner_avatar" : "/Image_Data/Channel/travel_avatar.jpg",
-        "description" : "Welcome to GeoGeo!  Let's explore the best places to visit in the world!",
+        "description" : "Hey It's me Nom Nom and I welcome you all to My channel Travel with Nom Nom. Where wanderlust meets storytelling!",
          "banner": "/Image_Data/Channel/travel_banner.jpg",
-        "subscribers" : "819 subscribers",
+        "subscribers" : "5.96K subscribers",
         "Videos" : ["video7","video13","video14","video15"]
     },
     {

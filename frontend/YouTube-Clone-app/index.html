@@ -28,9 +28,9 @@
       
       function myFunction() {
         if (document.documentElement.scrollTop > 0) {
-          document.querySelector(".swiper-nav-btns").classList.add("hideBtn");
+          document.querySelector(".swiper-nav-btns") && document.querySelector(".swiper-nav-btns").classList.add("hideBtn");
         } else {
-          document.querySelector(".swiper-nav-btns").classList.remove("hideBtn");
+          document.querySelector(".swiper-nav-btns") && document.querySelector(".swiper-nav-btns").classList.remove("hideBtn");
         }
       }
 
