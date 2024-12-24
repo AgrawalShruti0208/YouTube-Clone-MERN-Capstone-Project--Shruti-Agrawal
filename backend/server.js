@@ -31,9 +31,8 @@ import bodyParser from "body-parser";
 const app = new express();
 
 
-//Connecting mongoose in NodeJS with MongoDB using connection url provided by mongoDB compass for making a connection
-    //MongoDB Compass String:"mongodb://localhost:27017/ShoppyGlobeApplication"
-    //MongoDB Atlas String:"mongodb+srv://shrutiagrawal155:u1OQPQrqjVQc1NqX@shoppyglobeapp.yqohw.mongodb.net/"
+//Connecting mongoose in NodeJS with MongoDB using connection url provided by mongoDB compass/atlas for making a connection
+   
     
     // Connection string from MongoDB Atlas
     let url="mongodb+srv://shrutiagrawal155:UKq7gMO6NhTuX2Ft@youtubecloneapp.iyhnb.mongodb.net/YouTubeClone_DB";
@@ -50,29 +49,43 @@ const app = new express();
             
 
             //Loading Static Data to the Databases
-            // Clear existing data (optional)
-                    await VideosModel.deleteMany({});
-                    await CommentsModel.deleteMany({});
-                    console.log("Cleared existing data");
 
-                    // Insert videos
-                    const videoDocs = await VideosModel.insertMany(Video_Data);
-                    console.log("Inserted videos");
-                
+                // Check if videos already exist,if not preload them
+                VideosModel.countDocuments()
+                .then(async(count) => {
+                    if (count === 0) {
 
-                    const commentDocs = await CommentsModel.insertMany(Comment_Data);
-                    console.log("Inserted comments");
-                
-                    // Update videos to include associated comments
-                    for (const comment of commentDocs) {
-                      await VideosModel.findByIdAndUpdate(
-                        comment.video_ID,
-                        { $push: { videoComments: comment._id } },
-                        { new: true, useFindAndModify: false }
-                      );
+                        // Insert preload data if collection is empty
+                        const videoDocs = await VideosModel.insertMany(Video_Data);
+                        console.log("Inserted videos");
                     }
-                
-                    console.log("Updated videos with comments");
+                });
+
+                // Check if comments already exist,if not preload them
+                CommentsModel.countDocuments()
+                .then(async(count) => {
+                    if (count === 0) {
+
+                        // Insert preload data if collection is empty
+                        const commentDocs = await CommentsModel.insertMany(Comment_Data);
+                        console.log("Inserted comments");
+
+
+                        // Update videos to include associated comments
+                        for (const comment of commentDocs) {
+                            await VideosModel.findByIdAndUpdate(
+                            comment.video_ID,
+                            { $push: { videoComments: comment._id } },
+                            { new: true, useFindAndModify: false }
+                            );
+                        }
+                    
+                        console.log("Updated videos with comments");
+                            
+                        }
+                });
+                    
+                 
 
                 // Check if channels already exist,if not preload them
                 ChannelsModel.countDocuments()

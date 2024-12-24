@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 const commentSchema = mongoose.Schema(
     { 
+        User_ID: {
+            type: String,  // Field type is String
+            required: false // Optional field, not required 
+        },
         User_Avatar: {
             type: String,
             default :"../public/user_default_Avatar.jpg"

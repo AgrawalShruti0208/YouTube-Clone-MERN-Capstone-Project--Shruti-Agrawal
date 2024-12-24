@@ -5,9 +5,9 @@ export function storeTokenInLS(serverToken){
     return localStorage.setItem('token',serverToken);
 }
 
-// function to store user email in Local Storage 
-export function storeUserNameInLS(userName){
-    return localStorage.setItem('userName',userName);
+// function to store user email and name in Local Storage 
+export function storeUserEmailInLS(email){
+   return localStorage.setItem('userEmail',email);
 }
 
 export function storeUserIdInLS(userId){

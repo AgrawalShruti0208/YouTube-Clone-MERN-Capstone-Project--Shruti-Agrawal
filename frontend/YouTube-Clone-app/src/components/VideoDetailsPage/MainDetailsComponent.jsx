@@ -52,7 +52,7 @@ function MainDetailsComponent(props) {
    
         
         return ( 
-            <div className="MainDetailsComponent">
+            <div className="MainDetailsComponent pt-6 px-[1px] custom-small:pr-[10px] custom-small:ml-[10px] custom-mid:pr-[1.2rem] custom-mid:ml-5">
                 <VideoPlayer videoID={selected_video[0].videoURL} />
                 <div className='Information_Section p-4 relative'>
                     <VideoInformation ChannelData ={selected_channel} VideoData ={selected_video} />

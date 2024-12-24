@@ -31,15 +31,14 @@ export function registerUser(req,res){
                                     const newUser = new usersModel({
                                         email: req.body.email,
                                         password: hash,
-                                        username: req.body.email,
+                                        username: req.body.username,
                                         user_avatar: req.body.profilePic
                                     });
 
                                     //Save the user after creating 
                                     newUser.save()
                                     .then((result)=>{
-                                        //if successfully saved in database 
-                                        console.log(user);
+                                       
                                         console.log("User saved successfully",result);
                                         res.status(201).json({message:'Registration Successful!'});
                                     })
@@ -91,7 +90,7 @@ export function loginUser(req,res){
                 //user[0] - the user found with email is inside array so retrieving the user object
                 bcrypt.compare(req.body.password, user[0].password)
                 .then((result)=>{//true or false
-                    console.log(req.body.password,user, user[0].password,result)
+                    
                     if(result===true){
                         
 
@@ -148,16 +147,18 @@ export function loginUser(req,res){
 
 }
 
-export async function fetchUserDetails(req,res){
-    const id = req.params.id;
-    try{
-         
-        res.send(await usersModel.find({_id:id}));
-       
+export function fetchUserDetails(req,res){
+    usersModel.find({email:req.params.email})
+   .exec()
+   .then((user)=>{
+        if(user.length < 1){
+            console.log("Error in fetching details of user:",error.message);
+            res.status(500).json({message:"Error in fetching details of user:"+error.message});
+        }else{
+             res.send(user);
+        }
+        
+        
+   });  
            
-    }catch(error){
-        //catch => if not successful to fetch data, send error 
-        console.log("Error in fetching details of user:",error.message);
-        res.status(500).json({message:"Error in fetching details of user:"+error.message});
-    }
 }

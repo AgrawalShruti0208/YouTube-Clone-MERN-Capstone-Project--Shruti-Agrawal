@@ -13,7 +13,7 @@ const VideoPlayer = ({ videoID }) => {
   }
 
   return (
-    <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+    <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 , borderRadius : '0.6rem'}}>
       <iframe
         src={`https://www.youtube.com/embed/${videoID}`}
         style={{
@@ -22,6 +22,7 @@ const VideoPlayer = ({ videoID }) => {
           left: 0,
           width: '100%',
           height: '100%',
+          borderRadius : '0.6rem'
         }}
         title="YouTube video player"
         frameBorder="0"

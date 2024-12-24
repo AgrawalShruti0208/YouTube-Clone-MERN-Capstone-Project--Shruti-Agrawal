@@ -13,7 +13,7 @@ function VideoInformation(props) {
     const FormatDateYear = format(video.videoUpload,"yyyy");
     const FormatDateDay = format(video.videoUpload,"MMM dd");
 
-        const miniInfoDiv = document.querySelector('.smallInfo');
+        const miniInfoDiv = document.querySelector('.VideoInformation');
         const InfoDiv = document.querySelector('.InformationPopUp');
         
         // add a click event listener to the div
@@ -33,10 +33,10 @@ function VideoInformation(props) {
         <div className="VideoInformation">
             <div className="smallInfo">
                 
-                <h2 className="text-[1.2rem] font-medium">{video.videoTitle}</h2>
-                <h4><span className="text-gray-700 text-xm">{video.videoViews} . {DateDescription}</span>  ...more</h4>
+                <h2 className="text-[1.2rem] custom-mid:text-[1.1rem] font-medium">{video.videoTitle}</h2>
+                <h4 className="custom-mid:text-[0.83rem]"><span className="text-gray-700 text-sm">{video.videoViews} . {DateDescription}</span>  ...more</h4>
             </div>
-            <div className="InformationPopUp z-[500] bg-white text-black absolute top-0 left-0 h-[270%] hideComponent">
+            <div className="InformationPopUp z-[500] bg-white text-black absolute top-0 left-0 w-[100%] hideComponent">
                 <div className="InfoHeader flex justify-between p-3 mt-4">
                         <h1 className="text-[1.18rem] font-semibold">Description</h1>
                         <button className="crossBtn" onClick={handleClick}>

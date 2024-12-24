@@ -2,6 +2,7 @@ import { Video_Data } from "../utils/VideoData.js";
 import VideosModel from "../Models/VideosModel.js";
 import CommentsModel from "../Models/CommentsModel.js";
 
+
 export async function getVideosData(req,res){
 
   
@@ -37,7 +38,8 @@ export async function getVideosByCategory(req,res) {
 
 export async function getCommentsOfVideo(req,res){
     const {video_ID} = req.params;
-
+    
+    
     
         try {
             const video = await VideosModel.findById(video_ID).populate("comments");
@@ -64,3 +66,47 @@ export async function getCommentsOfVideo(req,res){
 
 
 }
+
+export function updateVideoLikes(req,res){
+    const {video_ID} = req.params;
+
+    VideosModel.findById(video_ID)
+   .then((data)=>{
+           
+       if(!data){
+           console.log("Something Went Wrong,",err.message);
+           return res.status(400).json({message:"Something Went Wrong,"+err.message});
+       }
+
+       const operationToPerform = req.body.msg; //increase or Decrease Number of Likes
+
+       let setLikes = data.videoLikes;
+       let setDisLikes = data.videoDislikes;
+
+       if(operationToPerform === "Like"){
+            setLikes +=1;
+            setDisLikes -=1;
+       }
+       if(operationToPerform === "DisLike"){
+           
+            setDisLikes +=1;
+            setLikes -=1;
+            
+        }
+
+        VideosModel.updateOne({ _id: data._id }, { $set: { videoLikes : setLikes , videoDislikes : setDisLikes} })
+        .then(async(item) => {
+            const updatedItem = await VideosModel.findById(data._id);
+            res.send(["Likes" , updatedItem.videoLikes]);
+        });
+
+
+   })
+   .catch((err)=>{
+       //catch => if not successful to fetch data, send error 
+       console.log("Error in updating the number of Likes:",err.message);
+       res.status(500).json({message:"Error in updating the number of Likes:"+err.message});
+       
+   });
+}
+

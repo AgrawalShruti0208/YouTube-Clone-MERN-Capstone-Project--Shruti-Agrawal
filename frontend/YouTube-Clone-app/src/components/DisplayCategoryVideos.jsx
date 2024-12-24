@@ -66,7 +66,7 @@ const DisplayCategoryVideos=()=>{
                     
                     {FilteredList.map((video)=>{
                         
-                        return <Link to={`/Video/${video._id}`}><VideoCard key={video._id} videoData={video}/></Link>
+                        return <Link to={`/Video/${video._id}`} key={video._id}><VideoCard videoData={video}/></Link>
                         
                     
                     })}

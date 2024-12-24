@@ -47,8 +47,8 @@ function VideoCard(props) {
                 
                 {!data.loading && 
                         <div className="Card_wrapper">
-                            <div className="videoThumbnail">
-                                <img src={video.videoThumbnail} alt="Video Thumbnail" />
+                            <div className="videoThumbnail rounded-lg">
+                                <img src={video.videoThumbnail} alt="Video Thumbnail" className="rounded-lg" />
                             </div>
                             <div className="videoSecondPart">
                                 <img src={channel.owner_avatar} alt="Channel_avatar" />

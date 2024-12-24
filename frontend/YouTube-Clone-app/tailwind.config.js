@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'custom-small': '374px', //custom screen size for applying padding
+        'custom-medium': '500px', //custom screen size for comments section
+        'custom-mid': '700px', //custom screen size for changing styles of tablet
+      },
+    },
   },
   plugins: [],
 }

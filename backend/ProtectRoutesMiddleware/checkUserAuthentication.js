@@ -16,13 +16,13 @@ export function checkUserAuthentication(req,res,next){
                 const tokenPassedByClient = authorizationHeader && authorizationHeader.split(" ")[1];
                 //received token
     
-            const decodedPayload = jwt.verify(tokenPassedByClient, process.env.JWT_KEY);
+            const decodedPayload = jwt.verify(tokenPassedByClient, process.env.REACT_APP_JWT_KEY);
             //If verification successful
                 //add this decodedPayload i.e. user information: id and email to the req using this middleware so that this information can be used afterwards
                 req.userData = decodedPayload;
                 console.log(`
                     --------------------------------------------------------------------------------------------------------------------------------------------------
-                                                User Authentication Successful, User is Now LoggedIn!.
+                                                User Authentication Successful!
                     --------------------------------------------------------------------------------------------------------------------------------------------------`);
                     
                 next(); //pass the control to the next middleware or controller
@@ -31,10 +31,10 @@ export function checkUserAuthentication(req,res,next){
             //If failed to VERIFY TOKEN
                 console.log(`
                 --------------------------------------------------------------------------------------------------------------------------------------------------
-                                            User Authentication Failed, Login Unsuccessful!.
+                                            User Authentication Failed!.
                 --------------------------------------------------------------------------------------------------------------------------------------------------`);
                              
-                return res.status(401).json('User Authentication Failed, You cannot login!');
+                return res.status(401).json('User Authentication Failed!');
         }
         
 

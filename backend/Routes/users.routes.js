@@ -8,7 +8,7 @@ export function UserRoutes(app){
         //and If the email and password matches with the entry in the database, generate JWT Token and send it to user
     app.post("/login",loginUser);
 
-    app.get("/user/:id", fetchUserDetails);
+    app.get("/user/:email", fetchUserDetails);
 }
 
 

@@ -13,6 +13,7 @@
         background-color: #fdfeff;
         overflow-x: hidden;
         overflow-y: auto;
+        
     }
 
     /* class to hide something */
@@ -266,16 +267,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 90vh;
   background-color: #f1f1f1;
 }
 
-.container {
+.loginSignupDiv {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   padding: 24px;
   box-sizing: border-box;
 }
@@ -404,6 +405,76 @@ body {
     margin-bottom: 15px;
     font-weight: 500;
   }
+
+  /* Add Comment Styles */
+.add-comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.comment-input {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  resize: none;
+  height: 60px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.comment-input:focus {
+  border-color: #065fd4;
+  outline: none;
+}
+
+.comment-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cancel-btn, .submit-btn {
+  padding: 8px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cancel-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background: #ddd;
+}
+
+.submit-btn {
+  background: #065fd4;
+  color: #fff;
+}
+
+.submit-btn:hover {
+  background: #044bb0;
+}
+
+/* Error Message Styles */
+.error-message {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
   
   .comment {
     display: flex;
@@ -453,8 +524,156 @@ body {
     line-height: 1.5;
     color: #444;
   }
+
+  .profile-container {
+    width: 50px; /* Set the size of the container */
+    height: 50px;
+    border-radius: 50%; /* Make the container circular */
+    overflow: hidden; /* Ensure the image doesn't overflow */
+    border: 2px solid #ccc; /* Optional: Add a border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Background color for contrast */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+  }
   
-          
+  .profile-image {
+    width: 100%; /* Make the image cover the container */
+    height: 100%;
+    object-fit: cover; /* Ensure the image scales and crops correctly */
+  }
+  
+
+  
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Adjust modal to be 10px above the bottom */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000;
+}
+
+.modal.open {
+  display: flex; /* Display modal when open */
+  align-items:flex-end;
+  padding-bottom: 30px;
+  
+}
+
+.modal.likeModalOpen{
+  display: flex; /* Display like/dislike modal when open */
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.edit-comment-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-buttons button {
+  margin: 5px;
+}
+
+/* Delete Message Styles */
+.delete-message {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Lower than modal */
+}
+
+.modal-content button{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.modal-content button .bx{
+  font-size: 7vw;
+}
+
+.modal-content button .modalText{
+    font-weight: 600;
+    font-size: large;
+}
+
+.DisplayVideos, .VideoSection, .videoSection{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+@media (min-width: 500px){
+  .comments-section h3 {
+      font-size: 16px;
+      font-weight: 500;
+  }
+
+  .avatar {
+    height: 40px;
+  }
+
+  .comment-input {
+    height: 50px;
+  }
+
+  .modal-content button .bx{
+    font-size: 3vw;
+  }
+  
+  .modal-content button .modalText{
+      font-weight: 600;
+      font-size: medium;
+  }
+
+}
+@media (min-width: 640px) {
+    .loginSignupDiv {
+        max-width: 500px;
+    }
+}
+@media (min-width: 700px) {
+  
+  .likeBtn button .bx, .dislikeBtn button .bx{
+    font-size:x-large;
+  }
+}
 
 }
 
@@ -464,16 +683,25 @@ body {
         @apply rounded-md active:after:bg-[#eaeaea89] hover:bg-[#ededed]
     }
 
+
+    .SignInBtn .bx{
+      @apply text-[3vw]
+    }
+
+    .SignInBtn .text{
+      @apply text-[1.8vw]
+    }
+
     .side-menu li a{
-        @apply flex items-center justify-around p-1
+        @apply flex items-center justify-start p-1 gap-3
     }
 
     .side-menu li .bx{
-        @apply text-[7vw]
+        @apply text-[7vw] custom-mid:text-[3.3vw]
     }
 
     .side-menu li .text{
-        @apply text-[3.5vw] font-medium
+        @apply text-[3.5vw] font-medium custom-mid:text-[1.8vw]
     }
 
     /*-------- Navigation SideBar Styling ----------*/

@@ -1,7 +1,7 @@
 import { useState} from 'react';
 import { useNavigate } from "react-router-dom";
 
-import { storeTokenInLS,storeUserNameInLS, storeUserIdInLS } from '../../utils/HelperFunctions';
+import { storeTokenInLS,storeUserEmailInLS, storeUserIdInLS } from '../../utils/HelperFunctions';
 
 export function LoginPage(){
 
@@ -19,7 +19,10 @@ export function LoginPage(){
     
 
     function handleGoToHome(){
+        
         navigateTo('/');
+        location.reload();
+
     }
     
 
@@ -72,6 +75,7 @@ export function LoginPage(){
             if(!err){
                 
                 const registerUserObj = { username, email, password};
+
                 fetch("http://localhost:3000/login",{
                     //as browser only accepts fetch API using its options{} to pass the email and password to the Request Body
                     method:'post',
@@ -89,7 +93,7 @@ export function LoginPage(){
                     if(data.token){
                         // If token returned in response, call function to store this token in Local Storage
                         storeTokenInLS(data.token);
-                        storeUserNameInLS(username);
+                        storeUserEmailInLS(email);
                         storeUserIdInLS(data.id);
 
                     }
@@ -118,7 +122,7 @@ export function LoginPage(){
         <div className='LoginSignupContainer'>
            
             {!apiResult &&
-                <form className="container" onSubmit={handleLogin}>
+                <form className="loginSignupDiv" onSubmit={handleLogin}>
                 
                     <div className="header">
                         <div className="text">Login</div>
@@ -156,7 +160,7 @@ export function LoginPage(){
                 </form>
             }
             {apiResult &&    
-                <div className="container">
+                <div className="loginSignupDiv">
                     <div className="inputs">
 
                         {(apiResult!=='User Authentication Successful!') &&

@@ -1,8 +1,15 @@
 /* ---------------Search Form Component---------------- */
-import { useState } from "react";
+import { useState, useEffect} from "react";
+import { useLocation } from 'react-router-dom';
 
 function SearchBar({ setResults }) {
     const [input,setInput] = useState("");
+    const location = useLocation();  // Hook to listen for changes in URL
+
+  // Clear the input when the URL changes
+  useEffect(() => {
+    setInput(""); // Clear the input value on URL change
+  }, [location]); // Triggered when `location` changes
 
     const fetchData=(value)=>{
       fetch("http://localhost:3000/videos")
