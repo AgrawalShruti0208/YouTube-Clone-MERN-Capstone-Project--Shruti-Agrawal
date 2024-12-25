@@ -80,12 +80,12 @@ function ChannelInformation(props) {
             )}
             
             {breakpoint=="medium" && (
-                <div className="channelSecondPart flex w-[90%] m-5 mb-0 gap-6">
-                    <div className="channelAvatar w-[25%]">
-                        <img src={channel.owner_avatar} alt="Avatar of the channel" className="rounded-full w-[100%]" />
+                <div className="channelSecondPart flex w-[90%] m-5 mb-0 gap-6 custom-lgDesktop:pl-5">
+                    <div className="channelAvatar w-[25%] lg:w-[20%] custom-lgDesktop:w-[14%] flex justify-center items-center custom-lgDesktop:justify-end custom-lgDesktop:items-start custom-lgDesktop:pt-4">
+                        <img src={channel.owner_avatar} alt="Avatar of the channel" className="rounded-full w-[100%] lg:w-[87%]" />
                     </div>
                     <div className="channelDetails w-[63%]">
-                        <h1 className="text-4xl font-bold">{channel.channel_name}</h1>
+                        <h1 className="text-4xl font-bold lg:text-3xl">{channel.channel_name}</h1>
                         
                         <div className="minorDetails flex items-center gap-1 text-gray-500  text-sm">
                             <h2 className="text-black  text-base">{channel.channel_owner}</h2>

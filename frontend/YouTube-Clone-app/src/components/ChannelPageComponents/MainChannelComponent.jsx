@@ -56,7 +56,7 @@ function MainChannelComponent(props) {
    
         
         return ( 
-            <div className="MainChannelComponent">
+            <div className="MainChannelComponent lg:w-[94%] lg:mx-auto">
                 <ChannelInformation channel={selected_channel[0]} />
                 <ChannelVideosCollection videos={selected_videos} />
                 

@@ -15,7 +15,7 @@ const OriginalModal = ({ isOpen, onClose, onEditClick, onDelete }) => {
   return (
     <>
       <div className={`modal ${isOpen ? 'open' : ''}`} onClick={onClose}>
-        <div className="modal-content flex flex-col w-[95%] items-start gap-2" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-content flex flex-col w-[95%] items-start gap-2 lg:w-[50%] custom-lgDesktop:w-[30%]" onClick={(e) => e.stopPropagation()}>
           <div className="modalHeader flex w-[95%] justify-between p-1 items-center">
             <h2>Comment</h2>
             <button onClick={onClose}><i className='bx bxs-x-circle' style={{ fontSize: '32px',color: '#494949' }}  ></i></button>

@@ -20,7 +20,7 @@ function VideoCategoryBtns() {
             
         
     return (
-        <div className= 'VideoDisplay pt-1'>
+        <div className= 'VideoDisplay pt-1 custom-lgDesktop:mt-3'>
             {/* Component to display all the videos and filtered videos */}
 
             {/* Slider to show filter buttons */}

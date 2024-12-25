@@ -12,7 +12,6 @@ function NavigationSideBar() {
 
   useEffect(() => {
     // Define media queries
-    // const largeScreen = window.matchMedia("(min-width: 1024px)");
     const mediumScreen = window.matchMedia("(min-width: 700px)");
     const smallScreen = window.matchMedia("(max-width: 699px)");
 
@@ -31,13 +30,11 @@ function NavigationSideBar() {
     updateBreakpoint();
 
     // Add listeners for breakpoint changes
-    // largeScreen.addEventListener("change", updateBreakpoint);
     mediumScreen.addEventListener("change", updateBreakpoint);
     smallScreen.addEventListener("change", updateBreakpoint);
 
     // Cleanup listeners on unmount
     return () => {
-      // largeScreen.removeEventListener("change", updateBreakpoint);
       mediumScreen.removeEventListener("change", updateBreakpoint);
       smallScreen.removeEventListener("change", updateBreakpoint);
     };
@@ -154,7 +151,7 @@ function NavigationSideBar() {
               className="sidebar hideComponent fixed top-0 left-0 w-[25%] h-[100%] bg-[#ffffff] shadow-2xl p-3 border-gray-100 border-2 z-[1000]
               custom-mid:w-[16%]">
                   <div className="Logo flex items-center">
-                      <img className="w-[100%] h-auto custom-mid:w-[70%]" src="/YouTube Logo.JPG" alt="YouTube Logo" />
+                      <img className="w-[100%] h-auto custom-mid:w-[70%] lg:w-[64%] custom-lgDesktop:w-[50%]" src="/YouTube Logo.JPG" alt="YouTube Logo" />
                   </div>
                  
                   {/* Side Navigation Bar */}
@@ -232,11 +229,11 @@ function NavigationSideBar() {
           {/*---------------------------HEADER SECTION---------------------- */}
             <section className='Header bg-white flex items-center justify-between gap-2 p-1 fixed z-[1000]  pb-5 custom-mid:pb-2  w-[100%] ml-0.5 border-b-2 border-spacing-1'>
     
-              <button className='showMenu  bg-[#eceaea] w-[10%] custom-mid:w-[7%]  h-8 flex justify-center items-center' onClick={handleShowMenu}>
+              <button className='showMenu  bg-[#eceaea] w-[10%] custom-mid:w-[7%]  h-8 flex justify-center items-center lg:w-[6%] custom-lgDesktop:w-[4%]' onClick={handleShowMenu}>
                 <i className='bx bx-menu bx-rotate-180'></i>
               </button>
               
-              <div className="HeaderLogo absolute left-16 visible">
+              <div className="HeaderLogo absolute left-16 visible lg:left-20 custom-lgDesktop:left-22">
                 <img className="h-9" src="/YouTube Logo.JPG" alt="YouTube Logo" />
               </div>
 
@@ -270,7 +267,7 @@ function NavigationSideBar() {
                   
                   {userInfo==undefined &&
                       
-                    <Link to="/UserSignUp" className="SignInBtn text-blue-600 bg-gray-50 border-2 border-gray-200 rounded-full w-[17%] flex items-center justify-center gap-2 p-1 hover:bg-blue-100">
+                    <Link to="/UserSignUp" className="SignInBtn text-blue-600 bg-gray-50 border-2 border-gray-200 rounded-full w-[17%] flex items-center justify-center gap-2 p-1 hover:bg-blue-100 lg:w-[14%] custom-lgDesktop:w-[11%]">
                       <i className='bx bx-user-circle' ></i>
                       <span className="text">Sign in</span>
                     </Link>

@@ -34,7 +34,7 @@ function SearchBar({ setResults }) {
     }
 
     return ( 
-        <div className='searchForm flex items-center bg-[#d5d3d3] justify-center m-3 rounded-2xl pl-2 pr-2'>
+        <div className='searchForm flex items-center bg-[#d5d3d3] justify-center m-3 rounded-2xl pl-2 pr-2 custom-lgDesktop:h-8'>
             <input type="text" 
               placeholder='Search YouTube' 
               value={input}

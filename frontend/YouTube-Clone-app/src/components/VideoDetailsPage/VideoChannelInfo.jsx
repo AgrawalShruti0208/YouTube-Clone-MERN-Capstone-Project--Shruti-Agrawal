@@ -92,7 +92,7 @@ function VideoChannelInfo(props) {
                     </div>
                 </Link>
 
-                <button className="subscribeBtn w-[35%] p-2 px-3 rounded-3xl bg-black text-white custom-mid:w-[29%] custom-mid:p-1 custom-mid:px-2 custom-mid:text-sm" onClick={toggleSubscription}>
+                <button className="subscribeBtn w-[35%] p-2 px-3 rounded-3xl bg-black text-white custom-smaller:w-[31%] custom-smaller:p-1 custom-smaller:px-2 custom-smaller:text-sm custom-mid:w-[29%] custom-mid:p-1 custom-mid:px-2 custom-mid:text-sm" onClick={toggleSubscription}>
                     {subscribeStatus}
                 </button>
             </div>

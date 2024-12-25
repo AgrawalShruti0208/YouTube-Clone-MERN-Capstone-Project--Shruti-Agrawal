@@ -632,12 +632,6 @@ body {
     font-size: large;
 }
 
-.DisplayVideos, .VideoSection, .videoSection{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
-  padding: 16px;
-}
 
 @media (min-width: 500px){
   .comments-section h3 {
@@ -663,16 +657,51 @@ body {
   }
 
 }
-@media (min-width: 640px) {
+@media (min-width: 600px) {
     .loginSignupDiv {
         max-width: 500px;
     }
+
+    .DisplayVideos, .VideoSection, .videoSection{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(250px, 1fr));
+      gap: 16px;
+      padding: 16px;
+    }
+
 }
 @media (min-width: 700px) {
   
   .likeBtn button .bx, .dislikeBtn button .bx{
     font-size:x-large;
   }
+
+}
+@media(min-width:1000px){
+  .modal-content button .bx{
+    font-size: 2vw;
+  }
+}
+@media (min-width: 1081px) {
+
+  .DisplayVideos, .VideoSection, .videoSection{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+  
+}
+
+@media (min-width: 1408px) {
+
+  .DisplayVideos, .VideoSection{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+  
 }
 
 }
@@ -685,11 +714,11 @@ body {
 
 
     .SignInBtn .bx{
-      @apply text-[3vw]
+      @apply text-[3vw] lg:text-[2.2vw] custom-lgDesktop:text-[1.8vw]
     }
 
     .SignInBtn .text{
-      @apply text-[1.8vw]
+      @apply text-[1.8vw] lg:text-[1.4vw] custom-lgDesktop:text-[1.1vw]
     }
 
     .side-menu li a{
@@ -697,11 +726,11 @@ body {
     }
 
     .side-menu li .bx{
-        @apply text-[7vw] custom-mid:text-[3.3vw]
+        @apply text-[7vw] custom-mid:text-[3.3vw] lg:text-[2.4vw] custom-lgDesktop:text-[2.2vw]
     }
 
     .side-menu li .text{
-        @apply text-[3.5vw] font-medium custom-mid:text-[1.8vw]
+        @apply text-[3.5vw] font-medium custom-mid:text-[1.8vw] lg:text-[1.5vw] custom-lgDesktop:text-[1.3vw]
     }
 
     /*-------- Navigation SideBar Styling ----------*/
