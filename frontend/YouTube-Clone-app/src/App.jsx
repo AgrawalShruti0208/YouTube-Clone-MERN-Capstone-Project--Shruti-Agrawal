@@ -10,7 +10,6 @@ import {Provider} from 'react-redux'
 import { store } from './utils/AppReduxStore.js'
 import { isTokenExpired } from './utils/HelperFunctions.js'
 
-
 function App() {
   
     const jwtToken = localStorage.getItem("token");
