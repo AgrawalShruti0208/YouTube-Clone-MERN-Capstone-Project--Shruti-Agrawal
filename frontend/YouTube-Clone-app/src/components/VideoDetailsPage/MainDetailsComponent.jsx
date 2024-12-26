@@ -63,7 +63,7 @@ function MainDetailsComponent(props) {
 
     const selected_video = Videodata.videos.find(video => video._id === props.videoID);
     const selected_channel = Channeldata.channels.find(channel => channel._id === selected_video.channelId[0]);
-    console.log(selected_video,selected_channel);
+   
     if (!selected_video || !selected_channel) {
         return <div>Video or Channel not found.</div>;
     }

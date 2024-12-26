@@ -172,9 +172,6 @@ function NavigationSideBar() {
                     }
                     {userInfo!=undefined &&
                       <>
-
-                          {console.log(userInfo)}
-                          
                           <li className="bg-gray-100 p-2">
                             <div className="profile-container">
                               <img src={userInfo.user_avatar} alt="Profile Picture" className="profile-image" />

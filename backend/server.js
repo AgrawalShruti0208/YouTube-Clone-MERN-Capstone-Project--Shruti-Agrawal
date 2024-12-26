@@ -57,7 +57,7 @@ const app = new express();
 
                         // Insert preload data if collection is empty
                         const videoDocs = await VideosModel.insertMany(Video_Data);
-                        console.log("Inserted videos");
+                        console.log("Preloaded Video data successfully");
                     }
                 });
 
@@ -68,7 +68,7 @@ const app = new express();
 
                         // Insert preload data if collection is empty
                         const commentDocs = await CommentsModel.insertMany(Comment_Data);
-                        console.log("Inserted comments");
+                        console.log("Preloaded Comments data successfully");
 
 
                         // Update videos to include associated comments

@@ -85,11 +85,11 @@ export function LoginPage(){
                     body:JSON.stringify(registerUserObj) //sending User Data to post rquest body after convrting it into json()
         
                 }).then(response=>response.json()).then((data)=>{
-                    console.log(data);
+                   
                     const result = (data.message)? data.message : data.error;
                     
                     setApiResult(result);
-                    console.log("User Login API Result:",result);
+                    
                     if(data.token){
                         // If token returned in response, call function to store this token in Local Storage
                         storeTokenInLS(data.token);

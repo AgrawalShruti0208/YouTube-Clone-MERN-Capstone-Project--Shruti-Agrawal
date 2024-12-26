@@ -39,7 +39,6 @@ export function registerUser(req,res){
                                     newUser.save()
                                     .then((result)=>{
                                        
-                                        console.log("User saved successfully",result);
                                         res.status(201).json({message:'Registration Successful!'});
                                     })
                                     .catch((err)=>{
@@ -111,7 +110,6 @@ export function loginUser(req,res){
                         console.log(`
 --------------------------------------------------------------------------------------------------------------------------------------------------
                             User Logged In, Created JWT Token Succesfully.
-                            JWT TOKEN: ${jwtToken}
 --------------------------------------------------------------------------------------------------------------------------------------------------`);
                         return res.status(200).json({
                             message:'User Authentication Successful!',
