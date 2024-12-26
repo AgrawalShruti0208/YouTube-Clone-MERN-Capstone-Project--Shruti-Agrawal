@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchVideoData } from "../../utils/videoDataSlice.js";
 import { fetchChannelData } from '../../utils/channelDataSlice.js';
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom'; // Import useParams
 
 // components
 import VideoPlayer from './VideoPlayer.jsx';
@@ -11,8 +10,7 @@ import VideoChannelInfo from './VideoChannelInfo.jsx';
 import CommentsSection from './CommentsSection.jsx';
 import DisplayAllVideos from '../DisplayAllVideos.jsx';
 
-function MainDetailsComponent() {
-    const { videoID } = useParams(); // Get videoID from URL parameters
+function MainDetailsComponent(props) {
     const [breakpoint, setBreakpoint] = useState(null);
     const dispatch = useDispatch();
 
@@ -63,8 +61,8 @@ function MainDetailsComponent() {
         return <div className='pt-6'>No data available.</div>;
     }
 
-    const selected_video = Videodata.videos.find(video => video._id === videoID);
-    const selected_channel = Channeldata.channels.find(channel => channel._id === selected_video?.channelId[0]);
+    const selected_video = Videodata.videos.find(video => video._id === props.videoID);
+    const selected_channel = Channeldata.channels.find(channel => channel._id === selected_video.channelId[0]);
    
     if (!selected_video || !selected_channel) {
         return <div>Video or Channel not found.</div>;
@@ -90,6 +88,7 @@ function MainDetailsComponent() {
                     <DisplayAllVideos display={"split"} />
                 </div>
             )}
+            
         </div>
     );
 }
