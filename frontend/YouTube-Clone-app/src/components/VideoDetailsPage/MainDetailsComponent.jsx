@@ -56,28 +56,25 @@ function MainDetailsComponent(props) {
         return <div className='pt-6'>Loading...</div>;
     }
 
+    // Redirect if there's an error
     if (error) {
-        return <> <div className='pt-6'>{error}</div>;
-        {navigateTo("/")}
-        </>    
+        navigateTo("/"); // Redirect to root route
+        return null; // Prevent rendering anything else
     }
 
+    // Redirect if no data is available
     if (Videodata.videos.length === 0 || Channeldata.channels.length === 0) {
-        return <>
-        <div className='pt-6'>No data available.</div>;
-        {navigateTo("/")}
-        </>
-        
+        navigateTo("/"); // Redirect to root route
+        return null; // Prevent rendering anything else
     }
 
     const selected_video = Videodata.videos.find(video => video._id === props.videoID);
     const selected_channel = Channeldata.channels.find(channel => channel._id === selected_video.channelId[0]);
    
+    // Redirect if video or channel is not found
     if (!selected_video || !selected_channel) {
-        return <>
-         <div>Video or Channel not found.</div>;
-         {navigateTo("/")}
-        </>
+        navigateTo("/"); // Redirect to root route
+        return null; // Prevent rendering anything else
     }
 
     return (
