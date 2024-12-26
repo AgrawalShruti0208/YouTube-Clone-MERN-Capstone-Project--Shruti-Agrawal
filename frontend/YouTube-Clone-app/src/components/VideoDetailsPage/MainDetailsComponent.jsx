@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchVideoData } from "../../utils/videoDataSlice.js";
 import { fetchChannelData } from '../../utils/channelDataSlice.js';
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 // components
 import VideoPlayer from './VideoPlayer.jsx';
@@ -18,6 +19,8 @@ function MainDetailsComponent(props) {
     const Channeldata = useSelector(state => state.channelList);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const navigateTo = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -58,14 +61,21 @@ function MainDetailsComponent(props) {
     }
 
     if (Videodata.videos.length === 0 || Channeldata.channels.length === 0) {
-        return <div className='pt-6'>No data available.</div>;
+        return <>
+        <div className='pt-6'>No data available.</div>;
+        {navigateTo("/")}
+        </>
+        
     }
 
     const selected_video = Videodata.videos.find(video => video._id === props.videoID);
     const selected_channel = Channeldata.channels.find(channel => channel._id === selected_video.channelId[0]);
    
     if (!selected_video || !selected_channel) {
-        return <div>Video or Channel not found.</div>;
+        return <>
+         <div>Video or Channel not found.</div>;
+         {navigateTo("/")}
+        </>
     }
 
     return (
