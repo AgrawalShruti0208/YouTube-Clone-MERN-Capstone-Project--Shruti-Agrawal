@@ -58,7 +58,7 @@ app.get('*',(_,res) => {
    
     
     // Connection string from MongoDB Atlas
-    let url="mongodb+srv://shrutiagrawal155:UKq7gMO6NhTuX2Ft@youtubecloneapp.iyhnb.mongodb.net/YouTubeClone_DB";
+    let url = process.env.MONGODB_URL;
     const PORT = process.env.PORT || 3000;
 
     mongoose
