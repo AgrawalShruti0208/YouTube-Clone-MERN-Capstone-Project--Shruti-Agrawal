@@ -1,9 +1,7 @@
-import { addChannel , addVideoToChannel, getVideosFromChannel, getChannels} from "../Controllers/channels.controller.js";
+import { addChannel , getVideosFromChannel, getChannels} from "../Controllers/channels.controller.js";
 
 function ChannelRoutes(app) {
-    //POST method to add video to the channel
-        app.post('/channel/:id',addVideoToChannel)
-
+    
     // POST method to add channel to the Database
         app.post('/channel',addChannel);
 

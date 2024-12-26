@@ -1,5 +1,4 @@
 import ChannelsModel from "../Models/ChannelsModel.js";
-import UserVideoModel from "../Models/UserChannelVideo.js";
 import notifier from 'node-notifier';
 
 
@@ -29,45 +28,6 @@ export function addChannel(req,res){
                     
     
 }
-
-// controller function to add video from the user to the Database
-export async function addVideoToChannel(req,res){
-    
-    const userVideo = req.body;
-    
-    
-        await UserVideoModel.create(userVideo)
-            .then(async(savedData) =>{
-                const savedVideo = savedData;
-                
-                // Video saved to its Collection, Now to save this video in Channel
-                    // Adding video to channel
-                    const channel_id = req.params.id; //getting channel_id
-
-                    const Channel = await ChannelsModel.findOne({ _id : channel_id })
-                    Channel.Videos.push(savedData._id)
-                    const savedVideoInChannel = await Channel.save()
-                    
-                    
-                res.send([savedData , savedVideoInChannel]);
-                notifier.notify({
-                    title: 'Success',
-                    message: 'Video Added To Channel',
-                    icon: '🛒'
-                })
-            }).catch((err)=>{
-                res.status(500).json([{message:"Failed to Add Channel"},{Error:err}]);
-                notifier.notify({
-                    title: '🚨Request Failed',
-                    message: 'Video Not Added To Channel',
-                icon: '🛒'
-                });
-            });
-        
-    
-                    
-    
-} 
 
 
 // To display videos of the Channel

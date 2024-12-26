@@ -1,8 +1,8 @@
 import { formatDistanceToNowStrict, format } from "date-fns";
 
 function VideoInformation(props) {
-    const channel = props.ChannelData[0];
-    const video = props.VideoData[0];
+    const channel = props.ChannelData;
+    const video = props.VideoData;
 
     const DateDescription = formatDistanceToNowStrict(
         video.videoUpload,
@@ -16,12 +16,12 @@ function VideoInformation(props) {
         const miniInfoDiv = document.querySelector('.VideoInformation');
         const InfoDiv = document.querySelector('.InformationPopUp');
         
-        // add a click event listener to the div
-        miniInfoDiv && miniInfoDiv.addEventListener('click', function() {
-          if(InfoDiv.classList.contains("hideComponent")){
-            InfoDiv.classList.replace("hideComponent","showComponent");
-          }  
-        });
+
+        function handleDivClick(){
+            if(InfoDiv.classList.contains("hideComponent")){
+                InfoDiv.classList.replace("hideComponent","showComponent");
+            }  
+        }
         
         function handleClick(){
             if(InfoDiv.classList.contains("showComponent")){
@@ -31,7 +31,7 @@ function VideoInformation(props) {
     
     return ( 
         <div className="VideoInformation">
-            <div className="smallInfo">
+            <div className="smallInfo" onClick={handleDivClick}>
                 
                 <h2 className="text-[1.2rem] custom-mid:text-[1.1rem] font-medium">{video.videoTitle}</h2>
                 <h4 className="custom-mid:text-[0.83rem]"><span className="text-gray-700 text-sm">{video.videoViews} . {DateDescription}</span>  ...more</h4>

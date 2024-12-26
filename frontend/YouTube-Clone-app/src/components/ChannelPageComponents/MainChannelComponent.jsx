@@ -1,5 +1,5 @@
-import {useDispatch , useSelector} from 'react-redux'
-import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from "react";
 
 import { fetchVideoData } from "../../utils/videoDataSlice.js";
 import { fetchChannelData } from '../../utils/channelDataSlice.js';
@@ -9,62 +9,55 @@ import ChannelVideosCollection from './ChannelVideosCollection.jsx';
 
 function MainChannelComponent(props) {
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    
-    let selected_videos,selected_channel;
     const Channeldata = useSelector(state => state.channelList);
-    
-    const Videodata =  useSelector(state => state.videoList);
-    
-    useEffect(()=>{
-        // dispatching action to fetch data from backend API and return the state of request
-        dispatch(fetchChannelData());
-        dispatch(fetchVideoData());
-        
+    const Videodata = useSelector(state => state.videoList);
 
-    },[dispatch]);
-
-    if(Channeldata.channels.length!=0){
-        selected_channel = Channeldata.channels.filter((channel)=>{
-            if(channel._id== props.channelID){
-                return channel;
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await dispatch(fetchChannelData());
+                await dispatch(fetchVideoData());
+            } catch (err) {
+                setError("Failed to fetch data");
+            } finally {
+                setLoading(false);
             }
-        })
-        
-       const videoIDs = selected_channel[0].Videos;
-       console.log("SELECTED CHANNEL:",selected_channel);
-       
-    
-       while(Videodata.videos.length==0){
-            continue;
-            
-       }
-        
-       
-       
-       if(Videodata.videos.length!=0){
-            selected_videos = Videodata.videos.filter((video)=>{
-                if(videoIDs.includes(video._id)){
-                    return video;
-                }
-            })
-       
-       
-       
-       console.log(selected_videos);
+        };
 
-   
-        
-        return ( 
-            <div className="MainChannelComponent lg:w-[94%] lg:mx-auto">
-                <ChannelInformation channel={selected_channel[0]} />
-                <ChannelVideosCollection videos={selected_videos} />
-                
-            </div>
-        );
-        }
-      
+        fetchData();
+    }, [dispatch]);
+
+    if (loading) {
+        return <div>Loading...</div>;
     }
+
+    if (error) {
+        return <div>{error}</div>;
+    }
+
+    let selected_videos, selected_channel;
+
+    if (Channeldata.channels.length !== 0) {
+        selected_channel = Channeldata.channels.find(channel => channel._id === props.channelID);
+
+        if (selected_channel) {
+            const videoIDs = selected_channel.Videos;
+
+            selected_videos = Videodata.videos.filter(video => videoIDs.includes(video._id));
+
+            return (
+                <div className="MainChannelComponent lg:w-[94%] lg:mx-auto">
+                    <ChannelInformation channel={selected_channel} />
+                    <ChannelVideosCollection videos={selected_videos} />
+                </div>
+            );
+        }
+    }
+
+    return <div>No channel found.</div>;
 }
 
 export default MainChannelComponent;

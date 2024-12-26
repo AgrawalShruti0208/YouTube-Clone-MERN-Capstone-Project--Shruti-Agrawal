@@ -3,17 +3,20 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function VideoChannelInfo(props) {
+
+    const channel = props.ChannelData;
+    const video = props.VideoData;
+
     const [subscribeStatus, setSubscribeStatus] = useState("Subscribe");
     const [likeStatus, setLikeStatus] = useState(false);
     const [dislikeStatus, setDislikeStatus] = useState(false);
-    const [numberOfLikes, setNumberOfLikes] = useState(props.VideoData[0].videoLikes);
+    const [numberOfLikes, setNumberOfLikes] = useState(video.videoLikes);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
 
     const navigateTo = useNavigate();
 
-    const channel = props.ChannelData[0];
-    const video = props.VideoData[0];
+    
     const jwtToken = localStorage.getItem("token");
 
     const openModal = (message) => {
