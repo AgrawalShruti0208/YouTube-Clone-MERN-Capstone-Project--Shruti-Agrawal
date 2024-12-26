@@ -3,10 +3,10 @@ import mongoose from "mongoose"
 
 
 //importing routes function in the server to run all the API routes
-import ChannelRoutes from "./Routes/channels.routes.js";
-import { UserRoutes } from "./Routes/users.routes.js";
-import VideosRoutes from "./Routes/videos.routes.js"
-import CommentsRoutes from "./Routes/comments.routes.js"
+    import ChannelRoutes from "./Routes/channels.routes.js";
+    import { UserRoutes } from "./Routes/users.routes.js";
+    import VideosRoutes from "./Routes/videos.routes.js"
+    import CommentsRoutes from "./Routes/comments.routes.js"
 
 //Static data to be added to Models 
     import { Video_Data } from "./utils/VideoData.js";
@@ -18,6 +18,7 @@ import CommentsRoutes from "./Routes/comments.routes.js"
     import CommentsModel from "./Models/CommentsModel.js";
     import { Comment_Data } from "./utils/CommentsData.js";
 
+
 import cors from "cors" //importing 'cors' which is used to run and connect both local servers -for frontend and backend
 //CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 
@@ -27,15 +28,38 @@ import cors from "cors" //importing 'cors' which is used to run and connect both
 //As receiving request body from front-end on button click
 import bodyParser from "body-parser";
 
+// imports for the deployment to render.com
+import path from "path";
+
 //creating express application 
 const app = new express();
 
+// to get path of the current directory of backend
+const _dirname = path.resolve();
+
+app.use(express.json()); //Middleware to accept json data from client in the server API
+app.use(cors()); //using the middleware cors 
+app.use(bodyParser.json());//using body-parser to check and convert request body in proper format
+
+// for serving front-end to backend to run on backend server
+app.use(express.static(path.join(_dirname, "/frontend/YouTube-Clone-app/dist")))
+
+//invoking routes function to run all the API routes
+UserRoutes(app);
+ChannelRoutes(app);
+CommentsRoutes(app);
+VideosRoutes(app);
+
+app.get('*',(_,res) => {
+    res.sendFile(path.resolve(_dirname, "frontend", "YouTube-Clone-app", "dist", "index.html"));
+})
 
 //Connecting mongoose in NodeJS with MongoDB using connection url provided by mongoDB compass/atlas for making a connection
    
     
     // Connection string from MongoDB Atlas
     let url="mongodb+srv://shrutiagrawal155:UKq7gMO6NhTuX2Ft@youtubecloneapp.iyhnb.mongodb.net/YouTubeClone_DB";
+    const PORT = process.env.PORT || 3000;
 
     mongoose
     .connect(url)
@@ -43,7 +67,7 @@ const app = new express();
             console.log("Connection with MongoDB Database Successful!");
 
             //creating server to run the application on specified port number only when connection with database is successful
-            app.listen(3000,()=>{
+            app.listen(PORT,()=>{
                 console.log("created server to run application on port number 3000");
             });
             
@@ -107,12 +131,7 @@ const app = new express();
     )
     .catch((error)=>console.log("Connection with MongoDB Database Unsuccessful!\nError:",error));
 
-app.use(express.json()); //Middleware to accept json data from client in the server API
-app.use(cors()); //using the middleware cors 
-app.use(bodyParser.json());//using body-parser to check and convert request body in proper format
 
-//invoking routes function to run all the API routes
-UserRoutes(app);
-ChannelRoutes(app);
-CommentsRoutes(app);
-VideosRoutes(app);
+
+
+
