@@ -57,10 +57,7 @@ function MainDetailsComponent(props) {
         return <div>{error}</div>;
     }
 
-    if (Videodata.videos.length === 0 || Channeldata.channels.length === 0) {
-        return <div>No video or channel data available.</div>;
-    }
-
+   
     const selected_video = Videodata.videos.find(video => video._id === props.videoID);
     const selected_channel = Channeldata.channels.find(channel => channel._id === selected_video.channelId[0]);
    
