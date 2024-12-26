@@ -57,7 +57,9 @@ function MainDetailsComponent(props) {
     }
 
     if (error) {
-        return <div className='pt-6'>{error}</div>;
+        return <> <div className='pt-6'>{error}</div>;
+        {navigateTo("/")}
+        </>    
     }
 
     if (Videodata.videos.length === 0 || Channeldata.channels.length === 0) {
