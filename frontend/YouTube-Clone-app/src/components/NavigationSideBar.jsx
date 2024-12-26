@@ -4,7 +4,7 @@ import { isTokenExpired } from "../utils/HelperFunctions.js";
 import { useEffect,useState } from "react";
 import {useDispatch , useSelector} from 'react-redux'
 import { fetchUserData } from "../utils/userDataSlice.js";
-import ProfileDropdown from "./ProfileDropdown.JSX";
+import ProfileDropdown from "./ProfileDropdown.jsx";
 
 function NavigationSideBar() {
 
