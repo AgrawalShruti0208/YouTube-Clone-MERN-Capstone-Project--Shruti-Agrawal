@@ -31,7 +31,7 @@ function VideoChannelInfo(props) {
 
     const toggleLikeBtn = () => {
         const messageObj = { msg: "Like" };
-        fetch(`http://localhost:3000/video/${video._id}/update`, {
+        fetch(`https://youtube-clone-mern-capstone-project.onrender.com/video/${video._id}/update`, {
             method: 'PATCH',
             headers: new Headers({
                 'Authorization': jwtToken ? `JWT ${jwtToken}` : "",
@@ -54,7 +54,7 @@ function VideoChannelInfo(props) {
 
     const toggleDislikeBtn = () => {
         const messageObj = { msg: "DisLike" };
-        fetch(`http://localhost:3000/video/${video._id}/update`, {
+        fetch(`https://youtube-clone-mern-capstone-project.onrender.com/video/${video._id}/update`, {
             method: 'PATCH',
             headers: new Headers({
                 'Authorization': jwtToken ? `JWT ${jwtToken}` : "",

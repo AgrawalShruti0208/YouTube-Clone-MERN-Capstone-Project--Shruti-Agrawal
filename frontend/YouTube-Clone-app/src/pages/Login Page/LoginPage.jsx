@@ -76,7 +76,7 @@ export function LoginPage(){
                 
                 const registerUserObj = { username, email, password};
 
-                fetch("http://localhost:3000/login",{
+                fetch("https://youtube-clone-mern-capstone-project.onrender.com/login",{
                     //as browser only accepts fetch API using its options{} to pass the email and password to the Request Body
                     method:'post',
                     headers:{

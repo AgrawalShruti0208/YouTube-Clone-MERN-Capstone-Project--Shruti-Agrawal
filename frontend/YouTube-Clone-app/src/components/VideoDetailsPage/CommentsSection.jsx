@@ -38,7 +38,7 @@ const CommentsSection = ({ videoId }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/video/${videoId}/comments`);
+        const response = await fetch(`https://youtube-clone-mern-capstone-project.onrender.com/video/${videoId}/comments`);
         if (!response.ok) {
           throw new Error("Failed to fetch comments");
         }
@@ -68,7 +68,7 @@ const CommentsSection = ({ videoId }) => {
   const handleDeleteComment = async () => {
     try {
       
-      const response = await fetch(`http://localhost:3000/comments/${currentCommentId}`, {
+      const response = await fetch(`https://youtube-clone-mern-capstone-project.onrender.com/comments/${currentCommentId}`, {
         method: "DELETE",
       });
 
@@ -87,7 +87,7 @@ const CommentsSection = ({ videoId }) => {
   const handleEditComment = async (newText) => {
     try {
      
-      const response = await fetch(`http://localhost:3000/comments/${currentCommentId}`, {
+      const response = await fetch(`https://youtube-clone-mern-capstone-project.onrender.com/comments/${currentCommentId}`, {
         method: "PUT", 
         headers: {
           "Content-Type": "application/json",
@@ -136,7 +136,7 @@ const CommentsSection = ({ videoId }) => {
     };
 
     try {
-      const response = await fetch(`http://localhost:3000/video/${videoId}/comment`, {
+      const response = await fetch(`https://youtube-clone-mern-capstone-project.onrender.com/video/${videoId}/comment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

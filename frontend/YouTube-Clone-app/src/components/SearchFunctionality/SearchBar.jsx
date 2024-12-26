@@ -12,7 +12,7 @@ function SearchBar({ setResults }) {
   }, [location]); // Triggered when `location` changes
 
     const fetchData=(value)=>{
-      fetch("http://localhost:3000/videos")
+      fetch("https://youtube-clone-mern-capstone-project.onrender.com/videos")
       .then((response) => response.json())
       .then((json) => {
         const result = json.filter((video) => {

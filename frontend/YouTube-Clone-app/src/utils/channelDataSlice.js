@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchChannelData = createAsyncThunk( "fetchChannelData", async () => {
-  const response = await fetch('http://localhost:3000/channels');
+  const response = await fetch('https://youtube-clone-mern-capstone-project.onrender.com/channels');
   return response.json();
 });
 

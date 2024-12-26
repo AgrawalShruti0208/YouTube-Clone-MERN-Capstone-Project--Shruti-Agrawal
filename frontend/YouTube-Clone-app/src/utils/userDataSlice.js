@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchUserData = createAsyncThunk("fetchUserData", async (userEmail) => {
-  const response = await fetch(`http://localhost:3000/user/${userEmail}`);
+  const response = await fetch(`https://youtube-clone-mern-capstone-project.onrender.com/user/${userEmail}`);
   return response.json();
 });
 

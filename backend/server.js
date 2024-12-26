@@ -38,7 +38,11 @@ const app = new express();
 const _dirname = path.resolve();
 
 app.use(express.json()); //Middleware to accept json data from client in the server API
-app.use(cors()); //using the middleware cors 
+
+const corsOptions = {
+    origin:"https://youtube-clone-mern-capstone-project.onrender.com",
+}
+app.use(cors(corsOptions)); //using the middleware cors 
 app.use(bodyParser.json());//using body-parser to check and convert request body in proper format
 
 // for serving front-end to backend to run on backend server

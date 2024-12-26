@@ -9,7 +9,7 @@ function DisplayAllVideos(props) {
 
     const [Videos_data, setVideosData] = useState([]);
 
-    const FetchVideos_URL = 'http://localhost:3000/videos';
+    const FetchVideos_URL = 'https://youtube-clone-mern-capstone-project.onrender.com/videos';
 
     const {fetchedData,err} = useCustomFetch(FetchVideos_URL);
 

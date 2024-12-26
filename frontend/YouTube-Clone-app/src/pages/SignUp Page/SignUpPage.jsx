@@ -45,7 +45,7 @@ export function SignUpPage() {
           profilePic: imageBase64
         };
 
-        fetch("http://localhost:3000/register", {
+        fetch("https://youtube-clone-mern-capstone-project.onrender.com/register", {
           method: 'post',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(registerUserObj)
