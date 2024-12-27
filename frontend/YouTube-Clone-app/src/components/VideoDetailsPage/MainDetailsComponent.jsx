@@ -25,22 +25,6 @@ function MainDetailsComponent(props) {
 
     const navigateTo = useNavigate();
     
-    useEffect(() => {
-        const isReloaded = sessionStorage.getItem("isReloaded");
-
-        if (!isReloaded) {
-            // First load
-            sessionStorage.setItem("isReloaded", "true");
-        } else {
-            // Page was reloaded
-            console.log("Page was reloaded by the user");
-            navigateTo(-1); // Navigate back to the previous page
-        }
-
-        return () => {
-            sessionStorage.removeItem("isReloaded"); // Optional cleanup
-        };
-    }, [navigateTo]);
 
     useEffect(() => {
         const fetchData = async () => {
