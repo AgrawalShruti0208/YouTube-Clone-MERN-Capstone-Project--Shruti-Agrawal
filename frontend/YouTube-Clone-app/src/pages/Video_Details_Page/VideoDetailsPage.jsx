@@ -2,6 +2,7 @@ import MainDetailsComponent from "../../components/VideoDetailsPage/MainDetailsC
 import { useParams } from "react-router-dom";
 
 function VideoDetailsPage() {
+    
     const params = useParams();
     const video_id = params.id;
 
@@ -14,3 +15,7 @@ function VideoDetailsPage() {
 }
 
 export default VideoDetailsPage;
+
+
+
+

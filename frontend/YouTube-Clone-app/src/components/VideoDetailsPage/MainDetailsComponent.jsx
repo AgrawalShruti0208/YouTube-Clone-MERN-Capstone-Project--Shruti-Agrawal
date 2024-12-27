@@ -12,6 +12,9 @@ import CommentsSection from './CommentsSection.jsx';
 import DisplayAllVideos from '../DisplayAllVideos.jsx';
 
 function MainDetailsComponent(props) {
+
+    
+
     const [breakpoint, setBreakpoint] = useState(null);
     const dispatch = useDispatch();
 
@@ -21,6 +24,24 @@ function MainDetailsComponent(props) {
     const [error, setError] = useState(null);
 
     const navigateTo = useNavigate();
+    
+    useEffect(() => {
+        const handlePageLoad = () => {
+          const [navigationEntry] = performance.getEntriesByType("navigation");
+    
+          if (navigationEntry && navigationEntry.type === "reload") {
+            console.log("The page was reloaded.");
+          } else {
+            console.log("The page was loaded normally.");
+          }
+        };
+    
+        handlePageLoad();
+    
+        return () => {
+          // Cleanup if necessary
+        };
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
