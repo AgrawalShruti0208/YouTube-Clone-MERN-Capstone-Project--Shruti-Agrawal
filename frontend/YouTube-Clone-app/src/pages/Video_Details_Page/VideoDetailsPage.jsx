@@ -1,9 +1,9 @@
 import MainDetailsComponent from "../../components/VideoDetailsPage/MainDetailsComponent.jsx";
 import { useEffect } from 'react';
-import { useHistory , useParams } from 'react-router-dom';
+import { useNavigate , useParams } from 'react-router-dom';
 
 const VideoDetailsPage = () => {
-    const history = useHistory();
+    const navigateTo = useNavigate();
 
     const params = useParams();
     const video_id = params.id;
@@ -12,7 +12,7 @@ const VideoDetailsPage = () => {
     useEffect(() => {
         const handleBeforeUnload = (event) => {
             // Redirect to home route
-            history.push('/');
+            navigateTo('/');
             // Optionally, you can prevent the default action
             event.preventDefault();
         };
@@ -23,7 +23,7 @@ const VideoDetailsPage = () => {
         return () => {
             window.removeEventListener('beforeunload', handleBeforeUnload);
         };
-    }, [history]);
+    }, []);
 
     return ( 
         <>
