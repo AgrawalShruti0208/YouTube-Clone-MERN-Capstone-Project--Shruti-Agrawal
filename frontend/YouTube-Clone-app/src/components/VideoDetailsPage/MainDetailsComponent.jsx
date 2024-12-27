@@ -54,9 +54,13 @@ function MainDetailsComponent(props) {
                 setLoading(false);
             }
         };
-
-        fetchData();
-    }, [dispatch]);
+    
+        if (!Videodata.videos.length || !Channeldata.channels.length) {
+            fetchData();
+        } else {
+            setLoading(false);
+        }
+    }, [dispatch, Videodata.videos.length, Channeldata.channels.length]);
 
     useEffect(() => {
         const splitScreen = window.matchMedia("(min-width: 1017px)");
