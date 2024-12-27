@@ -26,22 +26,21 @@ function MainDetailsComponent(props) {
     const navigateTo = useNavigate();
     
     useEffect(() => {
-        const handlePageLoad = () => {
-          const [navigationEntry] = performance.getEntriesByType("navigation");
-    
-          if (navigationEntry && navigationEntry.type === "reload") {
-            console.log("The page was reloaded.");
-          } else {
-            console.log("The page was loaded normally.");
-          }
-        };
-    
-        handlePageLoad();
-    
+        const isReloaded = sessionStorage.getItem("isReloaded");
+
+        if (!isReloaded) {
+            // First load
+            sessionStorage.setItem("isReloaded", "true");
+        } else {
+            // Page was reloaded
+            console.log("Page was reloaded by the user");
+            navigateTo(-1); // Navigate back to the previous page
+        }
+
         return () => {
-          // Cleanup if necessary
+            sessionStorage.removeItem("isReloaded"); // Optional cleanup
         };
-    }, []);
+    }, [navigateTo]);
 
     useEffect(() => {
         const fetchData = async () => {
