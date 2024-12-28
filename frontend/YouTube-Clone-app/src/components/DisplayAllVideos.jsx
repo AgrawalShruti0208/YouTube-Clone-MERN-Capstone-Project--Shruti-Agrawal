@@ -11,7 +11,7 @@ function DisplayAllVideos(props) {
 
     const FetchVideos_URL = 'https://youtube-clone-mern-capstone-project.onrender.com/videos';
 
-    const {fetchedData,err} = useCustomFetch(FetchVideos_URL);
+    const {fetchedData,err,isLoading} = useCustomFetch(FetchVideos_URL);
 
     useEffect(()=>{
         if(fetchedData){
@@ -24,6 +24,10 @@ function DisplayAllVideos(props) {
 
     if(err){ //if err is not null show error message
         console.log("Error : ",err);
+    }
+
+    if(isLoading){
+        return <div className="pt-6">Loading...</div>;
     }
     
     if(Videos_data){
