@@ -13,8 +13,7 @@ function VideoInformation(props) {
     const FormatDateYear = format(video.videoUpload,"yyyy");
     const FormatDateDay = format(video.videoUpload,"MMM dd");
 
-        const miniInfoDiv = document.querySelector('.VideoInformation');
-        const InfoDiv = document.querySelector('.InformationPopUp');
+       const InfoDiv = document.querySelector('.InformationPopUp');
         
 
         function handleDivClick(){
