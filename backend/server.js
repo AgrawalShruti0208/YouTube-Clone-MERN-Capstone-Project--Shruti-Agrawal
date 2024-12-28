@@ -40,7 +40,7 @@ const _dirname = path.resolve();
 app.use(express.json()); //Middleware to accept json data from client in the server API
 
 const corsOptions = {
-    origin: ["https://youtube-clone-mern-capstone-project.onrender.com", "http://localhost:3000"],
+    origin: ["https://youtube-clone-mern-capstone-project.onrender.com"],
 };
 
 
@@ -73,8 +73,8 @@ app.get('*',(_,res) => {
             console.log("Connection with MongoDB Database Successful!");
 
             //creating server to run the application on specified port number only when connection with database is successful
-            app.listen(PORT,()=>{
-                console.log("created server to run application on port number 3000");
+            app.listen(PORT, '0.0.0.0', () => {
+                console.log(`Server is running and listening on port ${PORT}`);
             });
             
 
