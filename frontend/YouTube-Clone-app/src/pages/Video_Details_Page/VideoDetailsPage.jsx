@@ -89,7 +89,7 @@ const VideoDetailsPage = () => {
 
     return ( 
         <>
-            <MainDetailsComponent videoID={video_id}/>
+            {/* <MainDetailsComponent videoID={video_id}/> */}
             <div className={`${
             breakpoint === "split"
                 ? "grid grid-cols-[68%_28%] mx-auto w-[96%] gap-4 pt-6 custom-lgDesktop:w-[100%] custom-lgDesktop:grid-cols-[70%_25%] custom-lgDesktop:gap-1"
