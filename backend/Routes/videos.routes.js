@@ -1,4 +1,4 @@
-import { getVideosData, getVideosByCategory,getCommentsOfVideo , updateVideoLikes} from "../Controllers/videos.controller.js";
+import { getVideosData,getCommentsOfVideo , updateVideoLikes} from "../Controllers/videos.controller.js";
 import {checkUserAuthentication} from "../ProtectRoutesMiddleware/checkUserAuthentication.js";
 
 function VideosRoutes(app) {

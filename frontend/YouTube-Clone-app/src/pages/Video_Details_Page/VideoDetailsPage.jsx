@@ -22,6 +22,7 @@ const VideoDetailsPage = () => {
 
     const Videodata = useSelector(state => state.videoList);
     const Channeldata = useSelector(state => state.channelList);
+    console.log(Videodata,Channeldata);
     const [loading, setLoading] = useState(true);
     
     const navigateTo = useNavigate();
