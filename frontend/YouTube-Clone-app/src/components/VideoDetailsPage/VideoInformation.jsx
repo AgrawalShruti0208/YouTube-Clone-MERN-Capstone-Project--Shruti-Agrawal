@@ -31,14 +31,14 @@ function VideoInformation(props) {
     
     return ( 
         <div className="VideoInformation">
-            <div className="smallInfo" onClick={handleDivClick}>
+            <div className="smallInfo">
                 
                 <h2 className="text-[1.2rem] custom-mid:text-[1.1rem] font-medium">{video.videoTitle}</h2>
                 <h4 className="custom-mid:text-[0.83rem]">
                     <span className="text-gray-700 text-sm">{video.videoViews} . {DateDescription}</span>
-                    <button> ...more</button>  
+                    <button onClick={handleDivClick}> ...more</button>  
                 </h4>
-                
+
             </div>
             <div className="InformationPopUp z-[500] bg-white text-black absolute top-0 left-0 w-[100%] hideComponent">
                 <div className="InfoHeader flex justify-between p-3 mt-4">
