@@ -10,7 +10,7 @@ import VideoInformation from '../../components/VideoDetailsPage/VideoInformation
 import VideoChannelInfo from '../../components/VideoDetailsPage/VideoChannelInfo.jsx';
 import CommentsSection from '../../components/VideoDetailsPage/CommentsSection.jsx';
 import DisplayAllVideos from '../../components/DisplayAllVideos.jsx';
-import MainDetailsComponent from '../../components/VideoDetailsPage/MainDetailsComponent.jsx';
+
 
 const VideoDetailsPage = () => {
     
@@ -22,7 +22,6 @@ const VideoDetailsPage = () => {
 
     const Videodata = useSelector(state => state.videoList);
     const Channeldata = useSelector(state => state.channelList);
-    console.log(Videodata,Channeldata);
     const [loading, setLoading] = useState(true);
     
     const navigateTo = useNavigate();
@@ -89,9 +88,8 @@ const VideoDetailsPage = () => {
     
 
     return ( 
-        <>
-            {/* <MainDetailsComponent videoID={video_id}/> */}
-            <div className={`${
+        
+        <div className={`${
             breakpoint === "split"
                 ? "grid grid-cols-[68%_28%] mx-auto w-[96%] gap-4 pt-6 custom-lgDesktop:w-[100%] custom-lgDesktop:grid-cols-[70%_25%] custom-lgDesktop:gap-1"
                 : "pt-6"
@@ -112,7 +110,7 @@ const VideoDetailsPage = () => {
             )}
             
         </div>
-        </>
+        
     );
 };
 
