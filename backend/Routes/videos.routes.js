@@ -4,7 +4,7 @@ import {checkUserAuthentication} from "../ProtectRoutesMiddleware/checkUserAuthe
 function VideosRoutes(app) {
 
     app.get("/videos",getVideosData);
-    app.get("/video/:category",getVideosByCategory);
+    // app.get("/video/:category",getVideosByCategory);
     app.get("/video/:video_ID/comments",getCommentsOfVideo);
     app.patch("/video/:video_ID/update",checkUserAuthentication, updateVideoLikes );
     
