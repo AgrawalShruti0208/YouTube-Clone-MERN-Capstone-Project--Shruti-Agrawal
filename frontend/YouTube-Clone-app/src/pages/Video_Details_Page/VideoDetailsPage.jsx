@@ -28,18 +28,27 @@ const VideoDetailsPage = () => {
     
 
     useEffect(() => {
-        async function fetchData(){
-            
-            dispatch(fetchVideoData());
-            dispatch(fetchChannelData());
-            setLoading(false);  
+        
+
+        function fetchData(){
+
+            if(!Videodata.videos.length){
+                dispatch(fetchVideoData());
+            }else if(!Channeldata.channels.length){
+                dispatch(fetchChannelData());
+            }else{
+                setLoading(false);
+            }
+
         }
+        
         
         if (!Videodata.videos.length || !Channeldata.channels.length) {
             fetchData();
         } else {
             setLoading(false);
         }
+
     }, [dispatch, Videodata.videos.length, Channeldata.channels.length]);
 
     useEffect(() => {
@@ -68,7 +77,7 @@ const VideoDetailsPage = () => {
         return null; // Prevent rendering anything else
     }
 
-    const selected_video = Videodata.videos.find(video => video._id === props.videoID);
+    const selected_video = Videodata.videos.find(video => video._id === video_id);
     const selected_channel = Channeldata.channels.find(channel => channel._id === selected_video.channelId[0]);
    
     // Redirect if video or channel is not found
