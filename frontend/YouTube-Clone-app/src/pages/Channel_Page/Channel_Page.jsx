@@ -19,6 +19,7 @@ function Channel_Page() {
     
     const Channeldata = useSelector(state => state.channelList);
     const Videodata = useSelector(state => state.videoList);
+    console.log(Channeldata,Videodata);
 
     useEffect(() => {
         
