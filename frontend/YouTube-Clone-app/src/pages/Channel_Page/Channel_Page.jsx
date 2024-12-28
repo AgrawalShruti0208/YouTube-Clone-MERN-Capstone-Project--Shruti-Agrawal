@@ -1,4 +1,3 @@
-import MainChannelComponent from "../../components/ChannelPageComponents/MainChannelComponent.jsx";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
@@ -19,7 +18,7 @@ function Channel_Page() {
     
     const Channeldata = useSelector(state => state.channelList);
     const Videodata = useSelector(state => state.videoList);
-    console.log(Channeldata,Videodata);
+    
 
     useEffect(() => {
         
@@ -68,7 +67,6 @@ function Channel_Page() {
 
     return ( 
         <div className="Channel_Page pt-4">
-            {/* <MainChannelComponent channelID = {channel_id} /> */}
             <div className="MainChannelComponent lg:w-[94%] lg:mx-auto">
                     <ChannelInformation channel={selected_channel} />
                     <ChannelVideosCollection videos={selected_video} />
